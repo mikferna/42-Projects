@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 12:49:26 by mikferna          #+#    #+#              #
-#    Updated: 2023/02/15 13:53:03 by mikferna         ###   ########.fr        #
+#    Updated: 2023/02/17 11:23:27 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ LINKS			=	-L . -lmlx -framework OpenGL -framework AppKit
 SRCS			=	srcs/main.c								\
 					srcs/check_command.c					\
 					srcs/mapa.c								\
+					srcs/mapa2.c							\
 					srcs/funciones.c						\
 					srcs/gnl/get_next_line.c				\
 					srcs/gnl/get_next_line_utils.c			\
