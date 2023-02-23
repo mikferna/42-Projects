@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:18:26 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/17 13:23:41 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/02/23 13:38:34 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,19 @@ typedef struct s_posicion
 	int	y;
 }	t_posicion;
 
+typedef struct s_texturas {
+	void	*player;
+	void	*floor;
+	void	*wall;
+	void	*collect;
+	void	*exit;
+}	t_texturas;
+
 typedef struct s_mapa
 {
-	char	**archivo;
-	int		alt;
-	int		anch;
+	char		**archivo;
+	int			alt;
+	int			anch;
 }	t_mapa;
 
 typedef struct s_param
@@ -45,8 +53,11 @@ typedef struct s_param
 
 typedef struct s_main
 {
-	void	*mlx;
-	t_mapa	*mapa;
+	void		*mlx;
+	void		*window;
+	t_mapa		*mapa;
+	t_texturas	text;
+	t_param		*param;
 }	t_main;
 
 int		main(int argc, char **argv);
@@ -60,5 +71,15 @@ int		check_walls_full(char *linea);
 void	check_walls_middle(char *linea);
 int		rectangular_map(char *argv);
 void	ft_exit_2(char *str);
+void	check_ent(char *argv);
+int		ft_strrchr(char *str, char c);
+void	ent_pas(int e, int p, int c);
+void	check_path(char *argv, t_main	*datos);
+char	**path_check2(char **copy, int x, int y);
+void	ent_check2(char **copy, char c, char f, char r);
+void	pfinder(char **copy, t_main	*datos);
+int		pfinder_x(char **copy);
+int		pfinder_y(char **copy);
+
 
 #endif
