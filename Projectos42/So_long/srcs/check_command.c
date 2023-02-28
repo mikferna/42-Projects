@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:02:01 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/17 11:53:28 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:17:20 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,18 @@ void	ft_exit_2(char *str)
 	write(1, str, i);
 	exit (2);
 }
+
+int	esc_key_hook(int esc, t_main *datos)
+{
+	if (esc == 53)
+	{
+		mlx_destroy_window(datos->mlx, datos->window);
+		exit (0);
+	}
+	return (0);
+}
+
+//int	movements(int move, t_main *datos)
+//{
+//
+//}

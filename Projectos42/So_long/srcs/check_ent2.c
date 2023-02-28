@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:18:04 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/23 13:37:49 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:35:24 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,5 +78,23 @@ int	pfinder_y(char **copy)
 		}
 		l++;
 	}
-	return(y);
+	return (y);
 }
+
+void	copydatos(t_main *datos, char *argv)
+{
+	int	fd;
+	int	i;
+
+	fd = open(argv, O_RDONLY);
+	i = 0;
+	datos->copy = (char **)malloc(sizeof(char *) * (datos->mapa->alt + 1));
+		while (1)
+	{
+		datos->copy[i] = get_next_line(fd);
+		if (datos->copy[i] == NULL)
+			break ;
+		i++;
+	}
+}
+	

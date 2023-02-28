@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:18:26 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/23 13:38:34 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:34:57 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_texturas {
 	void	*wall;
 	void	*collect;
 	void	*exit;
+	int		width;
+	int		height;
 }	t_texturas;
 
 typedef struct s_mapa
@@ -55,6 +57,7 @@ typedef struct s_main
 {
 	void		*mlx;
 	void		*window;
+	char		**copy;
 	t_mapa		*mapa;
 	t_texturas	text;
 	t_param		*param;
@@ -80,6 +83,11 @@ void	ent_check2(char **copy, char c, char f, char r);
 void	pfinder(char **copy, t_main	*datos);
 int		pfinder_x(char **copy);
 int		pfinder_y(char **copy);
-
+int		esc_key_hook(int esc, t_main *datos);
+int		movements(int move, t_main *datos);
+void	load(t_main	*datos);
+void	load_struct(t_main *datos);
+void	make_map(t_main	*datos);
+void	copydatos(t_main *datos, char *argv);
 
 #endif

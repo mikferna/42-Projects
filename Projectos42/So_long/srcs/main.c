@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 16:27:50 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/21 11:53:15 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:07:25 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int	open_wind(char *argv)
 	datos.mlx = mlx_init();
 	datos.window = mlx_new_window(datos.mlx,
 			datos.mapa->anch * 50, datos.mapa->alt * 50, "so_long");
+	load(&datos);
+	mlx_hook(datos.window, 2, 0, &esc_key_hook, &datos);
+	//mlx_hook(datos.window, 2, 0, &movements, &datos);
 	mlx_loop(datos.mlx);
 	return (0);
 }

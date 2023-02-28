@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:57:39 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/23 13:39:41 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:37:48 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	check_path(char *argv, t_main	*datos)
 	i = 0;
 	fd = open(argv, O_RDONLY);
 	copy = (char **)malloc(sizeof(char *) * (datos->mapa->alt + 1));
+	copydatos(datos, argv);
 	while (1)
 	{
 		copy[i] = get_next_line(fd);
@@ -78,8 +79,7 @@ void	check_path(char *argv, t_main	*datos)
 			break ;
 		i++;
 	}
-	copy = path_check2(copy, pfinder_x(copy), pfinder_y(copy));
-	hola (copy);
+	path_check2(copy, pfinder_x(copy), pfinder_y(copy));
 	ent_check2(copy, 'E', 'P', 'C');
 	close(fd);
 	free(copy);
