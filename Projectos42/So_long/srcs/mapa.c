@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:26:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/28 11:05:25 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:04:24 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	map_check(char *argv, t_main	*datos)
 
 	linecount = rectangular_map(argv);
 	rowcount = check_walls(argv, linecount);
+	(void)datos;
 	check_ent(argv);
 	check_path(argv, datos);
 	datos->mapa->alt = linecount - 1;

@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:53:24 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/28 11:38:38 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:16:49 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	make_map(t_main	*datos)
 	int	i;
 
 	l = 0;
-	printf("datos->copy -> [%s]", datos->copy[3]);
 	while (datos->copy[l])
 	{
 		i = 0;

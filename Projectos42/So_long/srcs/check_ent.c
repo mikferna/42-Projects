@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:57:39 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/28 11:37:48 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/02/28 14:18:52 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,26 +87,29 @@ void	check_path(char *argv, t_main	*datos)
 
 char	**path_check2(char **copy, int x, int y)
 {
-	if (copy[y][x] == '0' || copy[y][x] == 'E'
-		|| copy[y][x] == 'C' || copy[y][x] == 'P')
+	if (copy[y][x] == 'P' || copy[y][x] == 'C'
+		|| copy[y][x] == '0' || copy[y][x] == 'E')
 	{
-		copy[y][x] = 'o';
+		copy[y][x] = 'x';
 		path_check2(copy, x, y - 1);
-		if (copy[y][x] == 'o')
+		if (copy[y][x] == 'P' || copy[y][x] == 'C'
+			|| copy[y][x] == '0' || copy[y][x] == 'E' || copy[y][x] == 'x')
 		{
-			copy[y][x] = 'o';
+			copy[y][x] = 'x';
 			path_check2(copy, x + 1, y);
+			if (copy[y][x] == 'P' || copy[y][x] == 'C'
+				|| copy[y][x] == '0' || copy[y][x] == 'E' || copy[y][x] == 'x')
+			{
+				copy[y][x] = 'x';
+				path_check2(copy, x, y + 1);
+				if (copy[y][x] == 'P' || copy[y][x] == 'C' || copy[y][x] == '0'
+					|| copy[y][x] == 'E' || copy[y][x] == 'x')
+				{
+					copy[y][x] = 'x';
+					path_check2(copy, x - 1, y);
+				}
+			}
 		}
-	}
-	if (copy[y][x] == 'o')
-	{
-		copy[y][x] = 'o';
-		path_check2(copy, x - 1, y);
-	}
-	if (copy[y][x] == 'o')
-	{
-		copy[y][x] = 'o';
-		path_check2(copy, x, y + 1);
 	}
 	return (copy);
 }
