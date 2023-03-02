@@ -6,14 +6,14 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 12:49:26 by mikferna          #+#    #+#              #
-#    Updated: 2023/02/27 12:10:27 by mikferna         ###   ########.fr        #
+#    Updated: 2023/03/02 14:44:29 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	so_long
 DIR_OBJS		=	objs/
 CC				=	gcc
-CFLAGS			=	-Wall -Werror -Wextra -g
+CFLAGS			=	-Wall -Werror -Wextra -g3 -fsanitize=address
 LINKS			=	-L . -lmlx -framework OpenGL -framework AppKit
 
 SRCS			=	srcs/main.c								\

@@ -6,13 +6,13 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:18:04 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/28 11:35:24 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/03/02 15:06:35 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/main.h"
 
-void	ent_check2(char **copy, char c, char f, char r)
+void	ent_check2(char **copy, char f, char r)
 {
 	int	i;
 	int	l;
@@ -23,8 +23,6 @@ void	ent_check2(char **copy, char c, char f, char r)
 		i = 0;
 		while (copy[l][i])
 		{
-			if (copy[l][i] == c)
-				ft_exit_2("Imposible Map");
 			if (copy[l][i] == f)
 				ft_exit_2("Imposible Map");
 			if (copy[l][i] == r)
@@ -85,16 +83,19 @@ void	copydatos(t_main *datos, char *argv)
 {
 	int	fd;
 	int	i;
+	int	l;
 
 	fd = open(argv, O_RDONLY);
 	i = 0;
-	datos->copy = (char **)malloc(sizeof(char *) * (datos->mapa->alt + 1));
-		while (1)
+	l = rectangular_map(argv);
+	datos->copy = (char **)malloc(sizeof(char *) * (l + 1));
+	while (1)
 	{
 		datos->copy[i] = get_next_line(fd);
-		if (datos->copy[i] == NULL)
+		if (datos->copy[i] == NULL || i >= l - 1)
 			break ;
 		i++;
 	}
+	datos->copy[i] = NULL;
 }
 	

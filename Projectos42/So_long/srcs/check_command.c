@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:02:01 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/24 15:17:20 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:05:35 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ void	args_check(int argc, char **argv)
 	if (argc != 2)
 		ft_exit_2("Cantidad de argumentos invalidos");
 	if (!termina_con_ber(argv[1]))
-		ft_exit_2("Tipo de archivo no compatible");
+		ft_exit_2("Tipo de archivo no compatible, utilice un .ber");
 	fd = open(argv[1], O_RDONLY);
 	if (fd <= 0)
 		ft_exit_2("Archivo Vacio");
+	close (fd);
 }
 
 void	ft_exit_2(char *str)
@@ -46,7 +47,58 @@ int	esc_key_hook(int esc, t_main *datos)
 	return (0);
 }
 
-//int	movements(int move, t_main *datos)
-//{
-//
-//}
+void	win_move(int move, t_main *datos, int i, int l)
+{
+	if (move == 0 && datos->copy[l][i - 1] == 'E')
+	{
+		datos->copy[l][i] = '0';
+		datos->copy[l][i - 1] = 'P';
+		ft_exit_2("WIN!!");
+	}
+	if (move == 1 && datos->copy[l + 1][i] == 'E')
+	{
+		datos->copy[l][i] = '0';
+		datos->copy[l + 1][i] = 'P';
+		ft_exit_2("WIN!!");
+	}
+	if (move == 2 && datos->copy[l][i + 1] == 'E')
+	{
+		datos->copy[l][i] = '0';
+		datos->copy[l][i + 1] = 'P';
+		ft_exit_2("WIN!!");
+	}
+	if (move == 13 && datos->copy[l - 1][i] == 'E')
+	{
+		datos->copy[l][i] = '0';
+		datos->copy[l - 1][i] = 'P';
+		ft_exit_2("WIN!!");
+	}
+}
+
+void	moves(int move, t_main *datos, int i, int l)
+{
+	if (move == 0 && datos->copy[l][i - 1] != '1' &&
+		datos->copy[l][i - 1] != 'E')
+	{
+		datos->copy[l][i] = '0';
+		datos->copy[l][i - 1] = 'P';
+	}
+	if (move == 1 && datos->copy[l + 1][i] != '1' &&
+		datos->copy[l + 1][i] != 'E')
+	{
+		datos->copy[l][i] = '0';
+		datos->copy[l + 1][i] = 'P';
+	}
+	if (move == 2 && datos->copy[l][i + 1] != '1' &&
+		datos->copy[l][i + 1] != 'E')
+	{
+		datos->copy[l][i] = '0';
+		datos->copy[l][i + 1] = 'P';
+	}
+	if (move == 13 && datos->copy[l - 1][i] != '1' &&
+		datos->copy[l - 1][i] != 'E')
+	{
+		datos->copy[l][i] = '0';
+		datos->copy[l - 1][i] = 'P';
+	}
+}

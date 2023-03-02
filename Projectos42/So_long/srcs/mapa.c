@@ -6,21 +6,22 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:26:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/02/28 12:04:24 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:21:24 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/main.h"
 
-void	map_check(char *argv, t_main	*datos)
+void	map_check(char *argv, t_main *datos)
 {
 	int		linecount;
 	int		rowcount;
 
+	datos->mapa = (t_mapa *)malloc(sizeof(t_mapa));
+	datos->param->c = 0;
 	linecount = rectangular_map(argv);
 	rowcount = check_walls(argv, linecount);
-	(void)datos;
-	check_ent(argv);
+	check_ent(argv, datos);
 	check_path(argv, datos);
 	datos->mapa->alt = linecount - 1;
 	datos->mapa->anch = rowcount - 1;
