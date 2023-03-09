@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 13:18:26 by mikferna          #+#    #+#             */
-/*   Updated: 2023/03/02 13:45:42 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/03/09 11:25:58 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MAIN_H
 
 #include "../srcs/gnl/get_next_line.h"
+#include "../srcs/libft/libft.h"
 #include "../minilibx/mlx.h"
 
 # include <stdio.h>
@@ -22,12 +23,6 @@
 # include <limits.h>
 # include <unistd.h>
 # include <stdbool.h>
-
-typedef struct s_posicion
-{
-	int	x;
-	int	y;
-}	t_posicion;
 
 typedef struct s_texturas {
 	void	*player;
@@ -64,34 +59,50 @@ typedef struct s_main
 	t_param		*param;
 }	t_main;
 
+/*-main.c-*/
 int		main(int argc, char **argv);
 int		open_wind(char *argv);
-void	args_check(int argc, char **argv);
-int		termina_con_ber(const char *cadena);
+
+/*-mapa.c-*/
 void	map_check(char *argv, t_main *datos);
-size_t	ft_strlen2(const char *s);
 int		check_walls(char *argv, int linecount);
 int		check_walls_full(char *linea);
 void	check_walls_middle(char *linea);
 int		rectangular_map(char *argv);
-void	ft_exit_2(char *str);
-void	check_ent(char *argv, t_main *datos);
-int		ft_strrchr(const char *str, char c);
-void	ent_pas(int e, int p, int c);
-void	check_path(char *argv, t_main	*datos);
-char	**path_check2(char **copy, int x, int y);
-void	ent_check2(char **copy, char f, char r);
-void	pfinder(char **copy, t_main	*datos);
+
+/*-load_sprites.c-*/
+void	load_struct(t_main *datos);
+void	init(t_main	*datos);
+void	make_map(t_main	*datos, int l, int i);
+int		movements(int move, t_main *datos, int i, int l);
+int		movecheck(int move, t_main *datos, int i, int l);
+
+/*-funciones.c-*/
+int		termina_con_ber(const char *cadena);
+size_t	ft_strlen2(const char *s);
+int		moves(int move, t_main *datos, int i, int l);
+void	sust(char **copy, int y, int x);
+
+/*-check_ent2-*/
+void	ent_check2(char **copy, char e, char f, char r);
 int		pfinder_x(char **copy);
 int		pfinder_y(char **copy);
-int		esc_key_hook(int esc, t_main *datos);
-int		movements(int move, t_main *datos, int i, int l);
-void	init(t_main	*datos);
-void	load_struct(t_main *datos);
-void	make_map(t_main	*datos, int l, int i);
 void	copydatos(t_main *datos, char *argv);
-void	moves(int move, t_main *datos, int i, int l);
-int		movecheck(int move, t_main *datos, int i, int l);
-void	win_move(int move, t_main *datos, int i, int l);
+int		handle_destroy(t_main *datos);
 
-#endif
+/*-check_ent-*/
+void	check_ent(char *argv, t_main *datos);
+void	ent_pas(int e, int p, int c);
+int		ft_strrchr(const char *str, char c);
+void	check_path(char *argv, t_main	*datos);
+char	**path_check2(char **copy, int x, int y);
+
+/*-check_command-*/
+void	args_check(int argc, char **argv);
+void	ft_exit_2(char *str);
+int		esc_key_hook(int esc, t_main *datos);
+void	win_move(int move, t_main *datos, int i, int l);
+void	ft_exit_0(char *str);
+
+
+#endif 

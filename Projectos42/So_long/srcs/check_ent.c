@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:57:39 by mikferna          #+#    #+#             */
-/*   Updated: 2023/03/02 15:07:34 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:58:40 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	check_path(char *argv, t_main	*datos)
 	}
 	copy[i] = NULL;
 	path_check2(copy, pfinder_x(copy), pfinder_y(copy));
-	ent_check2(copy, 'P', 'C');
+	ent_check2(copy, 'e', 'P', 'C');
 	close(fd);
 	free(copy);
 }
@@ -93,22 +93,22 @@ char	**path_check2(char **copy, int x, int y)
 	if (copy[y][x] == 'P' || copy[y][x] == 'C'
 		|| copy[y][x] == '0')
 	{
-		copy[y][x] = 'x';
+		sust(copy, y, x);
 		path_check2(copy, x, y - 1);
 		if (copy[y][x] == 'P' || copy[y][x] == 'C'
 			|| copy[y][x] == '0' || copy[y][x] == 'x')
 		{
-			copy[y][x] = 'x';
+			sust(copy, y, x);
 			path_check2(copy, x + 1, y);
 			if (copy[y][x] == 'P' || copy[y][x] == 'C'
 				|| copy[y][x] == '0' || copy[y][x] == 'x')
 			{
-				copy[y][x] = 'x';
+				sust(copy, y, x);
 				path_check2(copy, x, y + 1);
 				if (copy[y][x] == 'P' || copy[y][x] == 'C' || copy[y][x] == '0'
 					|| copy[y][x] == 'x')
 				{
-					copy[y][x] = 'x';
+					sust(copy, y, x);
 					path_check2(copy, x - 1, y);
 				}
 			}

@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/07 12:49:26 by mikferna          #+#    #+#              #
-#    Updated: 2023/03/02 14:44:29 by mikferna         ###   ########.fr        #
+#    Updated: 2023/03/06 13:47:20 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCS			=	srcs/main.c								\
 					srcs/load_sprites.c						\
 					srcs/gnl/get_next_line.c				\
 					srcs/gnl/get_next_line_utils.c			\
+					srcs/libft/ft_itoa.c					\
 
 OBJS			=	$(SRCS:.c=.o)
 PREFIXED		=	$(addprefix $(DIR_OBJS), $(OBJS))
@@ -34,6 +35,7 @@ PREFIXED		=	$(addprefix $(DIR_OBJS), $(OBJS))
 $(DIR_OBJS)%.o : %.c
 	@mkdir -p $(DIR_OBJS)/srcs
 	@mkdir -p $(DIR_OBJS)/srcs/gnl
+	@mkdir -p $(DIR_OBJS)/srcs/libft
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : print $(PREFIXED)

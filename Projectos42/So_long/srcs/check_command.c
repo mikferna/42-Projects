@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 11:02:01 by mikferna          #+#    #+#             */
-/*   Updated: 2023/03/02 14:05:35 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/03/03 14:16:13 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,17 @@ void	ft_exit_2(char *str)
 	exit (2);
 }
 
+void	ft_exit_0(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	write(1, str, i);
+	exit (0);
+}
+
 int	esc_key_hook(int esc, t_main *datos)
 {
 	if (esc == 53)
@@ -53,52 +64,24 @@ void	win_move(int move, t_main *datos, int i, int l)
 	{
 		datos->copy[l][i] = '0';
 		datos->copy[l][i - 1] = 'P';
-		ft_exit_2("WIN!!");
+		ft_exit_0("WIN!!");
 	}
 	if (move == 1 && datos->copy[l + 1][i] == 'E')
 	{
 		datos->copy[l][i] = '0';
 		datos->copy[l + 1][i] = 'P';
-		ft_exit_2("WIN!!");
+		ft_exit_0("WIN!!");
 	}
 	if (move == 2 && datos->copy[l][i + 1] == 'E')
 	{
 		datos->copy[l][i] = '0';
 		datos->copy[l][i + 1] = 'P';
-		ft_exit_2("WIN!!");
+		ft_exit_0("WIN!!");
 	}
 	if (move == 13 && datos->copy[l - 1][i] == 'E')
 	{
 		datos->copy[l][i] = '0';
 		datos->copy[l - 1][i] = 'P';
-		ft_exit_2("WIN!!");
-	}
-}
-
-void	moves(int move, t_main *datos, int i, int l)
-{
-	if (move == 0 && datos->copy[l][i - 1] != '1' &&
-		datos->copy[l][i - 1] != 'E')
-	{
-		datos->copy[l][i] = '0';
-		datos->copy[l][i - 1] = 'P';
-	}
-	if (move == 1 && datos->copy[l + 1][i] != '1' &&
-		datos->copy[l + 1][i] != 'E')
-	{
-		datos->copy[l][i] = '0';
-		datos->copy[l + 1][i] = 'P';
-	}
-	if (move == 2 && datos->copy[l][i + 1] != '1' &&
-		datos->copy[l][i + 1] != 'E')
-	{
-		datos->copy[l][i] = '0';
-		datos->copy[l][i + 1] = 'P';
-	}
-	if (move == 13 && datos->copy[l - 1][i] != '1' &&
-		datos->copy[l - 1][i] != 'E')
-	{
-		datos->copy[l][i] = '0';
-		datos->copy[l - 1][i] = 'P';
+		ft_exit_0("WIN!!");
 	}
 }

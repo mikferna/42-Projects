@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 11:26:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/03/02 14:21:24 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/03/09 11:16:27 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	map_check(char *argv, t_main *datos)
 	int		linecount;
 	int		rowcount;
 
+	datos->param = (t_param *)malloc(sizeof(t_param));
 	datos->mapa = (t_mapa *)malloc(sizeof(t_mapa));
 	datos->param->c = 0;
 	linecount = rectangular_map(argv);
@@ -74,22 +75,28 @@ void	check_walls_middle(char *linea)
 
 int	rectangular_map(char *argv)
 {
-	int	a;
-	int	b;
-	int	fd;
-	int	linecount;
+	int		a;
+	int		b;
+	int		fd;
+	int		linecount;
+	char	*line;
 
 	fd = open(argv, O_RDONLY);
 	a = ft_strlen2(get_next_line(fd));
 	b = ft_strlen2(get_next_line(fd));
+	if (b < 2)
+		ft_exit_2("Mapa incorrecto, esta mal cerrado");
 	linecount = 2;
 	while (b != 0)
 	{
-		if (a != b)
-			ft_exit_2("Mapa incorrecto, no es rectangular");
+		if (b != a)
+			ft_exit_2("Mapa no rectangular");
 		b = ft_strlen2(get_next_line(fd));
 		linecount++;
 	}
+	line = get_next_line(fd);
+	if (line != NULL)
+		ft_exit_2("Mapa incorrecto");
 	close(fd);
 	return (linecount);
 }

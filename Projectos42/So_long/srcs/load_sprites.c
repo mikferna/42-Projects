@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:53:24 by mikferna          #+#    #+#             */
-/*   Updated: 2023/03/02 12:52:33 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:26:50 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,22 @@ void	make_map(t_main	*datos, int l, int i)
 	}
 }
 
-//#define KEY_W 13
-//#define KEY_A 0
-//#define KEY_S 1
-//#define KEY_D 2
-
 int	movements(int move, t_main *datos, int i, int l)
 {
 	static int	b;
+	char		*moves;
+	int			len;
 
 	i = pfinder_x(datos->copy);
 	l = pfinder_y(datos->copy);
-	b += movecheck(move, datos, i, l);
+	if (movecheck(move, datos, i, l))
+	{
+		moves = ft_itoa(b);
+		len = ft_strlen2(moves);
+		write(1, moves, len);
+		write(1, "\n", 1);
+		b++;
+	}
 	make_map(datos, 0, 0);
 	esc_key_hook(move, datos);
 	return (0);
@@ -96,5 +100,7 @@ int	movecheck(int move, t_main *datos, int i, int l)
 	if (datos->param->c == datos->param->c2)
 		win_move(move, datos, i, l);
 	moves(move, datos, i, l);
-	return (1);
+	if (datos->copy[l][i] == '0')
+		return (1);
+	return (0);
 }

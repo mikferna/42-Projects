@@ -6,13 +6,13 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 16:18:04 by mikferna          #+#    #+#             */
-/*   Updated: 2023/03/02 15:06:35 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/03/09 10:53:25 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/main.h"
 
-void	ent_check2(char **copy, char f, char r)
+void	ent_check2(char **copy, char e, char f, char r)
 {
 	int	i;
 	int	l;
@@ -23,6 +23,8 @@ void	ent_check2(char **copy, char f, char r)
 		i = 0;
 		while (copy[l][i])
 		{
+			if (copy[l][i] == e)
+				ft_exit_2("Imposible Map");
 			if (copy[l][i] == f)
 				ft_exit_2("Imposible Map");
 			if (copy[l][i] == r)
@@ -98,4 +100,10 @@ void	copydatos(t_main *datos, char *argv)
 	}
 	datos->copy[i] = NULL;
 }
-	
+
+int	handle_destroy(t_main *datos)
+{
+	mlx_destroy_window(datos->mlx, datos->window);
+	exit(0);
+	return (0);
+}
