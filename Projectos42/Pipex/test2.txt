@@ -1,0 +1,12 @@
+total 120
+drwxr-xr-x  11 mikferna  2022_urduliz    374 May  3 11:25 .
+drwxr-xr-x   7 mikferna  2022_urduliz    238 Mar 13 15:32 ..
+drwxr-xr-x   5 mikferna  2022_urduliz    170 Mar 10 12:01 .vscode
+-rw-r--r--   1 mikferna  2022_urduliz   1776 Apr 26 13:07 Makefile
+drwxr-xr-x   3 mikferna  2022_urduliz    102 Mar 10 13:52 includes
+drwxr-xr-x   3 mikferna  2022_urduliz    102 Apr 24 14:12 objs
+-rwxr-xr-x   1 mikferna  2022_urduliz  56376 May  3 11:25 pipex
+drwxr-xr-x   3 mikferna  2022_urduliz    102 Apr 26 13:06 pipex.dSYM
+drwxr-xr-x   6 mikferna  2022_urduliz    204 Apr  5 12:00 srcs
+-rwxrwxrwx   1 mikferna  2022_urduliz      0 Apr 28 11:17 test1.txt
+-rwxrwxrwx   1 mikferna  2022_urduliz      0 May  3 11:27 test2.txt
