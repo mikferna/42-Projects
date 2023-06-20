@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_main.c                                          :+:      :+:    :+:   */
+/*   ps_init.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/05 11:25:21 by mikferna          #+#    #+#             */
-/*   Updated: 2023/06/15 11:17:07 by mikferna         ###   ########.fr       */
+/*   Created: 2023/05/16 15:20:03 by mikferna          #+#    #+#             */
+/*   Updated: 2023/06/15 11:25:15 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
-{
-	t_list	a;
-	int		*argb;
+void init(int *argb, t_list **a) {
+    int i = 0;
 
-	if (argc < 2)
-	{
-		printf("Lista Ordenada");
-		return (0);
-	}
-	else
-	{
-		argb = checkers(argc, argv);
-		init(argb, &a);
-	}
+    *a = malloc(sizeof(t_list));
+    (*a)->num = argb[i];
+    (*a)->index = i;
+    (*a)->next = NULL;
+
+    t_list *temp = *a;
+
+    i++;
+
+    while (argb[i] != 0) {
+        temp->next = malloc(sizeof(t_list));
+        temp = temp->next;
+        temp->num = argb[i];
+        temp->index = i;
+        temp->next = NULL;
+
+        i++;
+    }
 }

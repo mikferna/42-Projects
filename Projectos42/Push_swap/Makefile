@@ -6,7 +6,14 @@ CFLAGS			=	-Wall -Werror -Wextra -g3 -fsanitize=address
 
 SRCS			=	srcs/ps_main.c							\
 					srcs/ps_checker.c						\
+					srcs/ps_init.c							\
 					srcs/libft/ft_atoi.c					\
+					srcs/libft/ft_split.c					\
+					srcs/libft/ft_substr.c					\
+					srcs/libft/ft_strlen.c					\
+					srcs/libft/ft_strlcpy.c					\
+					srcs/libft/ft_strdup.c					\
+					srcs/libft/ft_memcpy.c					\
 
 OBJS			=	$(SRCS:.c=.o)
 PREFIXED		=	$(addprefix $(DIR_OBJS), $(OBJS))
