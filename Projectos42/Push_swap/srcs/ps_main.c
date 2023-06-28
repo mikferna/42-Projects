@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:25:21 by mikferna          #+#    #+#             */
-/*   Updated: 2023/06/15 11:17:07 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:13:37 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	t_list	a;
-	int		*argb;
+	//t_list	a;
+	//int		*argb;
 
 	if (argc < 2)
 	{
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		argb = checkers(argc, argv);
-		init(argb, &a);
+		checker(argc, argv);
+		//init(argb, &a);
 	}
 }

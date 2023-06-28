@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:25:41 by mikferna          #+#    #+#             */
-/*   Updated: 2023/06/15 11:25:23 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:51:56 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ typedef struct s_list
 int		main(int argc, char **argv);
 
 /*-ps_checker.c-*/
-int		*dup_check(char **argv, int len);
-int		check_sorted(char **argv, int i);
-int		*checkers(int argc, char **argv);
+void	checker(int argc, char **argv);
+void	cheker_comillas_arg(int argc, char **argv);
+int		*cheker_dups_arg(int argc, char **argv);
+void	cheker_order_arg(int argc, char **argv);
 void	ft_exit_2(char *str);
-void	checker_comillas(char **argv);
-int		space_tab_checker(char *str);
+
 
 /*-ps_init.c-*/
 void	init(int *argb, t_list **a);

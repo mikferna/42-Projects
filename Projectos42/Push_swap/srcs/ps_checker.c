@@ -6,82 +6,97 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:36:31 by mikferna          #+#    #+#             */
-/*   Updated: 2023/06/15 11:21:13 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/06/28 13:15:19 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	*dup_check(char **argv, int len)
+void	checker(int argc, char **argv)
+{
+	char	**list;
+	int		i;
+
+	if (argc == 2)
+	{
+		list = ft_split(argv[1], ' ');
+		i = 0;
+		while (list[i])
+			i++;
+		cheker_dups_arg(i, list);
+		cheker_order_arg(i, list);
+	}
+	else if (argc > 2)
+	{
+		cheker_comillas_arg(argc, argv);
+		cheker_dups_arg(argc, argv);
+		cheker_order_arg(argc, argv);
+	}
+}
+
+void	cheker_comillas_arg(int argc, char **argv)
 {
 	int	i;
+	int	l;
+
+	i = 2;
+	while (i <= argc - 1 && argv[i][0])
+	{
+		l = 0;
+		while (argv[i][l])
+		{
+			if (argv[i][l] == ' ' || argv[i][l] == '	')
+				ft_exit_2("Error en comillas");
+			l++;
+		}
+		i++;
+	}
+}
+
+int	*cheker_dups_arg(int argc, char **argv)
+{
+	int	i;
+	int	*num_list;
 	int	j;
-	int	*a;
-	int *argb;
 
-	len = 0;
-	while (argv[len])
-		len++;
-	a = malloc(sizeof(int) * len);
+	num_list = malloc(sizeof(int) * argc);
+	if (num_list == NULL)
+		ft_exit_2("Malloc Error 'num_list'\n");
 	i = 0;
-	while (argv[++i])
-		a[i - 1] = ft_atoi(argv[i]);
-	i = -1;
-	while (++i < len - 1)
+	while (++i < argc)
+		num_list[i] = atoi(argv[i]);
+	i = 0;
+	while (i < argc - 1)
 	{
-		j = i;
-		while (++j < len)
+		j = i + 1;
+		while (j < argc)
 		{
-			if (a[j] == a[i])
-			{
-				free(a);
-				ft_exit_2("Numeros Duplicados");
-			}
+			if (num_list[i] == num_list[j])
+				ft_exit_2("Numeros Duplicados\n");
+			j++;
 		}
+		i++;
 	}
-	argb = a;
-	free(a);
-	return (argb);
+	return (num_list);
 }
 
-int	check_sorted(char **argv, int i)
+void	cheker_order_arg(int argc, char **argv)
 {
-	//printf("[%i]", i);
-	if (i == 1)
-		argv = ft_split(argv[1], ' ');
-	while (*argv)
+	int	i;
+	int	current_num;
+	int	prev_num;
+
+	i = 1;
+	while (i < argc)
 	{
-		if (!argv[1])
-			return (0);
-		if (ft_atoi(*argv) < ft_atoi(argv[1]))
-			argv++;
-		else
-			return (1);
+		current_num = atoi(argv[i]);
+		prev_num = atoi(argv[i - 1]);
+		if (current_num < prev_num)
+			return ;
+		i++;
 	}
-	return (0);
-}
-
-
-void	checker_comillas(char **argv)
-{
-	int		i;
-	int		l;
-	int		num;
-
-	i = 0;
-	l = 2;
-	num = 0;
-	while (argv[l] && argv[1][0] == '"')
-	{
-		i = 0;
-		while (argv[l][i])
-		{
-			if (argv[l][i] == ' ' || (argv[l][i] >= '0' && argv[l][i] <= '9'))
-				ft_exit_2("Argumentos erroneos");
-			i++;
-		}
-		l++;
-	}
+	write(1, "Numeros Ordenados", 18);
+	exit(0);
 }
 
 void	ft_exit_2(char *str)
@@ -93,41 +108,4 @@ void	ft_exit_2(char *str)
 		i++;
 	write(1, str, i);
 	exit (2);
-}
-
-int	*checkers(int argc, char **argv)
-{
-	char	**arguments;
-	int		*argb;
-
-	if (argc >= 3)
-		checker_comillas(argv);
-	if (argc == 2 && space_tab_checker(argv[3]))
-	{
-		arguments = ft_split(argv[1], ' ');
-		argb = dup_check(arguments, 0);
-		if (!check_sorted(argv, 1))
-			ft_exit_2("Lista Ordenada");
-	}
-	else
-	{
-		argb = dup_check(argv, 0);
-		if (!check_sorted(argv, 0))
-			ft_exit_2("Lista Ordenada");
-	}
-	return (argb);
-}
-
-int	space_tab_checker(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str && str[i])
-	{
-		if (str[i] != ' ' && str[i] != '	')
-			return (1);
-		i++;
-	}
-	return (0);
 }
