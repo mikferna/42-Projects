@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 11:36:31 by mikferna          #+#    #+#             */
-/*   Updated: 2023/06/28 13:15:19 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/06/30 13:27:23 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,15 @@ void	checker(int argc, char **argv)
 		i = 0;
 		while (list[i])
 			i++;
+		if (!ft_check_elements(&argv[1], argc))
+			ft_exit_2("Error");
 		cheker_dups_arg(i, list);
 		cheker_order_arg(i, list);
 	}
 	else if (argc > 2)
 	{
+		if (!ft_check_elements(&argv[1], argc))
+			ft_exit_2("Error");
 		cheker_comillas_arg(argc, argv);
 		cheker_dups_arg(argc, argv);
 		cheker_order_arg(argc, argv);

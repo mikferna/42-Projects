@@ -6,6 +6,7 @@ CFLAGS			=	-Wall -Werror -Wextra -g3 -fsanitize=address
 
 SRCS			=	srcs/ps_main.c							\
 					srcs/ps_checker.c						\
+					srcs/ps_checker2.c						\
 					srcs/ps_init.c							\
 					srcs/libft/ft_atoi.c					\
 					srcs/libft/ft_split.c					\

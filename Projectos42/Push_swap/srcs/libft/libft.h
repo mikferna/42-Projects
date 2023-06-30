@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:00:53 by mikferna          #+#    #+#             */
-/*   Updated: 2022/10/14 14:01:58 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/06/30 13:30:38 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 
 int			ft_isalpha(int c);
-int			ft_isdigit(int arg);
 int			ft_isalnum(int argument);
 int			ft_isascii(int a);
 int			ft_isprint(int a);
