@@ -1,0 +1,54 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/09 15:08:09 by mikferna          #+#    #+#              #
+#    Updated: 2023/08/09 15:11:21 by mikferna         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NAME			=	push_swap
+DIR_OBJS		=	objs/
+CC				=	gcc
+CFLAGS			=	-Wall -Werror -Wextra -g3 -fsanitize=address
+//LINKS			=	-L . -lmlx -framework OpenGL -framework AppKit
+
+SRCS			=	srcs/main.c							\
+					srcs/checkers.c						\
+					srcs/lift/ft_split.c				\
+
+
+OBJS			=	$(SRCS:.c=.o)
+PREFIXED		=	$(addprefix $(DIR_OBJS), $(OBJS))
+
+# ========= RULES ==========
+
+$(DIR_OBJS)%.o : %.c
+	@mkdir -p $(DIR_OBJS)/srcs
+	@mkdir -p $(DIR_OBJS)/srcs/libft
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME) : print $(PREFIXED)
+	@$(CC) $(CFLAGS) $(LINKS) -o $(NAME) $(PREFIXED)
+	@echo "\n${GREEN}Mandatory part compiled!${RESET}\n"
+
+# ========== FUNCTIONS ==========
+
+print:
+	@echo "\n$(YELLOW)---------- Compilando Ficheros de Projecto ---------$(RESET)\n"
+
+all: $(NAME)
+
+clean:
+	@rm -rf $(OBJS) $(DIR_OBJS)
+	@echo "\n${BLUE}Cleaned!${RESET}\n"
+
+fclean: clean
+	@rm -f $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re print
