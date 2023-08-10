@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/09 15:08:09 by mikferna          #+#    #+#              #
-#    Updated: 2023/08/09 15:11:21 by mikferna         ###   ########.fr        #
+#    Updated: 2023/08/10 13:31:20 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,13 @@ CFLAGS			=	-Wall -Werror -Wextra -g3 -fsanitize=address
 
 SRCS			=	srcs/main.c							\
 					srcs/checkers.c						\
-					srcs/lift/ft_split.c				\
+					srcs/libft/ft_split.c				\
+					srcs/libft/ft_strlen.c				\
+					srcs/libft/ft_substr.c				\
+					srcs/libft/ft_strdup.c				\
+					srcs/libft/ft_strlcpy.c				\
+					srcs/libft/ft_memcpy.c				\
+					srcs/libft/ft_atoi.c				\
 
 
 OBJS			=	$(SRCS:.c=.o)

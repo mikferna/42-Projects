@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:10:10 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/09 13:29:21 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/10 15:19:03 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	main(int argc, char **argv)
 	else
 	{
 		checker(argc, argv);
+		node_gen()
 	}
 }
