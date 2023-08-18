@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:11:14 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/09 15:06:46 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/18 13:44:18 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,17 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-//t_list **head;
-//t_list b* = malloc(sizeof(t_list));
-//head = &b;
-//b = a->next;
-
 ///*-main.c-*/
 int		main(int argc, char **argv);
 ///*-checkers.c-*/
-void	checker(int argc, char **argv);
+void	checker(int argc, char **argv, t_list *a);
 void	checker_characters(int argc, char **argv);
-int		*list_gen(int argc, int cont, char **argv);
+void	list_gen(int argc, int cont, char **argv, t_list *a);
 int		lista(int argc, char**argv);
 void	ft_exit_2(char *str);
+///*-node.c-*/
+void	addback(t_list	*list, int value, int id);
+t_list	*ft_lstnew(int num, int id);
 
 
 #endif

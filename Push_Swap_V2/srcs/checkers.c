@@ -6,13 +6,13 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:32:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/10 15:17:55 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/18 13:46:43 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	checker(int argc, char **argv)
+void	checker(int argc, char **argv, t_list *a)
 {
 	int	*num_list;
 	int	cont;
@@ -25,8 +25,7 @@ void	checker(int argc, char **argv)
 		num_list = malloc(sizeof(int) * (argc - 1));
 	if (num_list == NULL)
 		ft_exit_2("Error Malloc");
-	num_list = list_gen(argc, cont, argv);
-	//free(num_list);
+	list_gen(argc, cont, argv, a);
 }
 
 void	checker_characters(int argc, char **argv)
@@ -51,38 +50,33 @@ void	checker_characters(int argc, char **argv)
 	}
 }
 
-int *list_gen(int argc, int cont, char **argv)
+void	list_gen(int argc, int cont, char **argv, t_list *a)
 {
 	int		i;
-	int		*list;
+	int		l;
 	char	**list2;
 
 	i = 0;
+	l = 1;
+	list2 = NULL;
 	if (argc == 2)
-	{
 		list2 = ft_split(argv[1], ' ');
-		list = malloc(sizeof(int) * cont);
-		if (list == NULL)
-			ft_exit_2("Error Malloc");
-		while (list2[i])
-		{
-			list[i] = ft_atoi(list2[i]);
-			i++;
-		}
-		free(list2);
-	}
 	else
 	{
-		list = malloc(sizeof(int) * (argc - 1));
-		if (list == NULL)
-			ft_exit_2("Error Malloc");
-		while (i < (argc - 1))
-		{
-			list[i] = atoi(argv[i + 1]);
-			i++;
-		}
+		list2 = malloc(sizeof(char *) * argc);
+		if (list2 == NULL)
+			ft_exit_2("Error Malloc List2");
+		list2 = argv;
+		i++;
 	}
-	return (list);
+	a = ft_lstnew(atoi(list2[i]), l);
+	i++;
+	while (i - 1 <= cont && list2[i])
+	{
+		addback(a, atoi(list2[i]), l);
+		i++;
+		l++;
+	}
 }
 
 int	lista(int argc, char**argv)
@@ -103,7 +97,6 @@ int	lista(int argc, char**argv)
 		if (argv[1][i - 1] > '0' && argv[1][i - 1] < '9')
 			cont++;
 	}
-	printf("[%i]\n", cont);
 	return (cont);
 }
 
