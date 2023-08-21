@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:53:07 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/21 12:39:24 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/21 14:04:48 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,22 @@ t_list	*ft_lstnew(int num, int id)
 int	node_numcheck(t_list	*list)
 {
 	int		temp_num;
+	t_list	*uno;
+	t_list	*dos;
 
+	uno = list;
+	dos = uno;
+	while (uno->next != NULL)
+	{
+		while (dos->next != NULL)
+		{
+			dos = dos->next;
+			if (uno->num == dos->num)
+				return (2);
+		}
+		uno = uno->next;
+		dos = uno;
+	}
 	temp_num = list->num;
 	while (list->next != NULL)
 	{

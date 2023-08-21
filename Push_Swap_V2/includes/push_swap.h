@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:11:14 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/21 12:27:56 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/21 14:58:28 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <ctype.h>
 # include <string.h>
 # include "../srcs/libft/libft.h"
+
+# define MAX_INT	2147483647
+# define MIN_INT	-2147483647
 
 typedef struct s_list
 {

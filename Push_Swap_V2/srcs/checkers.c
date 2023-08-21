@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:32:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/21 13:00:41 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/21 14:55:22 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ void	checker(int argc, char **argv, t_list *a)
 	checker_characters(argc, argv);
 	cont = lista(argc, argv);
 	a = list_gen(argc, cont, argv, a);
+	if (node_numcheck(a) == 2)
+		ft_exit_2("Numeros Repetidos");
 	if (node_numcheck(a) == 1)
-		ft_exit_2("Numeros Ordenados O Repetidos");
+	{
+		write(1, "\n", 2);
+		exit(0);
+	}
 }
 
 void	checker_characters(int argc, char **argv)
@@ -41,9 +46,7 @@ void	checker_characters(int argc, char **argv)
 			{
 				if (argv[l][i] != '-' && argv[l][i] != '+')
 					ft_exit_2("Caracteres Erroneos");
-				if ((argv[l][i] == '-' || argv[l][i] == '+') &&
-					(argv[l][i + 1] != '-' && argv[l][i + 1] != '+') &&
-						(argv[l][i + 1] < '0' || argv[l][i + 1] > '9'))
+				if (argv[l][i] == '-' || argv[l][i] == '+')
 					ft_exit_2("Caracteres Erroneos");
 			}
 			i++;
