@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:11:14 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/18 13:44:18 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/21 12:27:56 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ int		main(int argc, char **argv);
 ///*-checkers.c-*/
 void	checker(int argc, char **argv, t_list *a);
 void	checker_characters(int argc, char **argv);
-void	list_gen(int argc, int cont, char **argv, t_list *a);
+t_list	*list_gen(int argc, int cont, char **argv, t_list *a);
 int		lista(int argc, char**argv);
 void	ft_exit_2(char *str);
 ///*-node.c-*/
 void	addback(t_list	*list, int value, int id);
 t_list	*ft_lstnew(int num, int id);
-
+int		node_numcheck(t_list	*list);
 
 #endif
