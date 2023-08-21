@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/09 15:08:09 by mikferna          #+#    #+#              #
-#    Updated: 2023/08/17 13:52:59 by mikferna         ###   ########.fr        #
+#    Updated: 2023/08/21 16:51:27 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CFLAGS			=	-Wall -Werror -Wextra -g3 -fsanitize=address
 SRCS			=	srcs/main.c							\
 					srcs/checkers.c						\
 					srcs/node.c							\
+					srcs/functions.c					\
 					srcs/libft/ft_split.c				\
 					srcs/libft/ft_strlen.c				\
 					srcs/libft/ft_substr.c				\

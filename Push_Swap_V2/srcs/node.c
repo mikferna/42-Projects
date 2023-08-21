@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:53:07 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/21 14:04:48 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:21:55 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,27 @@ int	node_numcheck(t_list	*list)
 		temp_num = list->num;
 	}
 	return (1);
+}
+
+long	ft_atoil(const char *str)
+{
+	long			res;
+	long			sign;
+	unsigned int	i;
+
+	res = 0;
+	sign = 1;
+	i = 0;
+	if (str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + (str[i] - '0');
+		i++;
+	}
+	return (res * sign);
 }

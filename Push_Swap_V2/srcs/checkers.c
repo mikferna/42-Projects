@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:32:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/21 14:55:22 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/21 16:53:41 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	checker_characters(int argc, char **argv)
 				ft_exit_2("Caracteres Erroneos");
 			if ((argv[l][i] < '0' || argv[l][i] > '9') && argv[l][i] != ' ')
 			{
-				if (argv[l][i] != '-' && argv[l][i] != '+')
+				if (argv[l][i] != '-')
 					ft_exit_2("Caracteres Erroneos");
-				if (argv[l][i] == '-' || argv[l][i] == '+')
+				if (argv[l][i + 1] == '-')
 					ft_exit_2("Caracteres Erroneos");
 			}
 			i++;
@@ -69,14 +69,16 @@ t_list	*list_gen(int argc, int cont, char **argv, t_list *a)
 	{
 		list2 = malloc(sizeof(char *) * argc);
 		if (list2 == NULL)
-			ft_exit_2("Error Malloc List2");
+			ft_exit_2("Error Malloc List");
 		list2 = argv;
 		i++;
 	}
+	atoi_check(list2[i]);
 	a = ft_lstnew(atoi(list2[i]), l - 1);
 	i++;
 	while ((i - 1 <= cont && list2[i]) || (i < argc && list2[i]))
 	{
+		atoi_check(list2[i]);
 		addback(a, atoi(list2[i]), l);
 		i++;
 		l++;
@@ -103,15 +105,4 @@ int	lista(int argc, char**argv)
 			cont++;
 	}
 	return (cont);
-}
-
-void	ft_exit_2(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	write(1, str, i);
-	exit (2);
 }
