@@ -6,10 +6,9 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:53:07 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/21 16:21:55 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:39:28 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/push_swap.h"
 
@@ -24,6 +23,7 @@ void	addback(t_list	*list, int value, int id)
 	c->index = id;
 	c->next = NULL;
 	list->next = c;
+	printf("id: %d, num: %d\n", c->index, c->num);
 }
 
 t_list	*ft_lstnew(int num, int id)
@@ -90,4 +90,17 @@ long	ft_atoil(const char *str)
 		i++;
 	}
 	return (res * sign);
+}
+
+int	ft_lstsize(t_list *lst)
+{
+	unsigned int	i;
+
+	i = 1;
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }

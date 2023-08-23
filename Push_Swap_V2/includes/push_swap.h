@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:11:14 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/21 16:51:07 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:58:31 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_list
 int		main(int argc, char **argv);
 
 ///*-checkers.c-*/
-void	checker(int argc, char **argv, t_list *a);
+t_list	*checker(int argc, char **argv);
 void	checker_characters(int argc, char **argv);
 t_list	*list_gen(int argc, int cont, char **argv, t_list *a);
 int		lista(int argc, char**argv);
@@ -44,9 +44,26 @@ void	atoi_check(char *num);
 void	addback(t_list	*list, int value, int id);
 t_list	*ft_lstnew(int num, int id);
 int		node_numcheck(t_list	*list);
+int		ft_lstsize(t_list *lst);
 
 ///*-functions.c.c-*/
 void	ft_exit_2(char *str);
 long	ft_atoil(const char *str);
+
+///*-movements.c-*/
+void	swap(t_list **list);
+void	rotate(t_list **list);
+void	revrotate(t_list **list);
+void	push(t_list **list1, t_list **list2);
+
+///*-doublemovements.c-*/
+void	doubleswap(t_list **list1, t_list **list2);
+void	doublerotate(t_list **list1, t_list **list2);
+void	doublerevrotate(t_list **list1, t_list **list2);
+
+///*-algorithm.c-*/
+void	algorithm(t_list **lst_a, t_list **lst_b);
+void	three_nbr(t_list **list);
+void	five_nbr(t_list **list_a, t_list **list_b);
 
 #endif

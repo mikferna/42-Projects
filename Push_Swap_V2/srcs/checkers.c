@@ -6,14 +6,15 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:32:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/21 16:53:41 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/23 13:40:01 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	checker(int argc, char **argv, t_list *a)
+t_list	*checker(int argc, char **argv)
 {
+	t_list	*a;
 	int		cont;
 
 	a = malloc(sizeof(t_list));
@@ -27,6 +28,7 @@ void	checker(int argc, char **argv, t_list *a)
 		write(1, "\n", 2);
 		exit(0);
 	}
+	return (a);
 }
 
 void	checker_characters(int argc, char **argv)
@@ -75,6 +77,7 @@ t_list	*list_gen(int argc, int cont, char **argv, t_list *a)
 	}
 	atoi_check(list2[i]);
 	a = ft_lstnew(atoi(list2[i]), l - 1);
+	printf("id: %d, num: %d\n", a->index, a->num);
 	i++;
 	while ((i - 1 <= cont && list2[i]) || (i < argc && list2[i]))
 	{

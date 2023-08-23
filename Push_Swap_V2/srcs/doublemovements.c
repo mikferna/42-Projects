@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   doublemovements.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 11:10:10 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/23 13:46:35 by mikferna         ###   ########.fr       */
+/*   Created: 2023/08/21 18:29:00 by mikferna          #+#    #+#             */
+/*   Updated: 2023/08/23 13:55:41 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+void	doubleswap(t_list **list1, t_list **list2)
 {
-	t_list	*a;
-	t_list	*b;
+	swap(list1);
+	swap(list2);
+	write(1, "ss\n", 3);
+}
 
-	b = NULL;
-	if (argc < 2)
-	{
-		write(1, "\n", 2);
-		exit(0);
-	}
-	else
-	{
-		a = checker(argc, argv);
-		algorithm(&a, &b);
-	}
+void	doublerotate(t_list **list1, t_list **list2)
+{
+	rotate(list1);
+	rotate(list2);
+	write(1, "rr\n", 3);
+}
+
+void	doublerevrotate(t_list **list1, t_list **list2)
+{
+	revrotate(list1);
+	revrotate(list2);
+	write(1, "rrr\n", 4);
 }
