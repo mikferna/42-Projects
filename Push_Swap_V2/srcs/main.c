@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:10:10 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/28 15:04:36 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/28 16:25:35 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	else
 	{
 		a = checker(argc, argv);
-		//b = malloc(sizeof(t_list));
+		b = malloc(sizeof(t_list));
 		algorithm(&a, &b);
 	}
 }

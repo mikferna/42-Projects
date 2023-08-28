@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:52:05 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/28 15:15:24 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/28 17:22:34 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	algorithm(t_list **lst_a, t_list **lst_b)
 		swap(lst_a, 'a');
 	else if (len == 3)
 		three_nbr(lst_a, 'a');
-	else if (len == 5)
+	else if (len == 6)
 		five_nbr(lst_a, lst_b);
 	//else
 	//	big_nbr(lst_a, lst_b);
@@ -84,4 +84,3 @@ void	five_nbr(t_list **list_a, t_list **list_b)
 			make_move(list_a, list_b, max, 1);
 	}
 }
- 

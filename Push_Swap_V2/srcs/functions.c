@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:50:19 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/28 15:05:59 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/28 17:22:21 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	relative_calc(t_list *list)
 	i = 0;
 	val = ft_lstsize(list);
 	temp = list;
-	while (i < val / 2)
+	while (i < (val / 2) + 1)
 	{
 		temp->relpos = i;
 		temp = temp->next;
@@ -61,18 +61,14 @@ void	findmaxmin(t_list *list)
 	t_list	*tmp;
 
 	max = list->num;
-	printf("list->num = [%d]\n", list->num);
 	min = list->num;
 	tmp = list;
-	while (list->next)
+	while (list)
 	{
-		//printf("list->num = [%i]\n", list->num);
 		if (list->num > max)
 			max = list->num;
 		if (list->num < min)
 			min = list->num;
-		//printf("max = [%i]\n", max);
-		//printf("min = [%i]\n", min);
 		list = list->next;
 	}
 	while (tmp)
@@ -89,6 +85,6 @@ void	findmaxmin(t_list *list)
 
 void	relmaxmin(t_list *list)
 {
-	findmaxmin(list);
 	relative_calc(list);
+	findmaxmin(list);
 }
