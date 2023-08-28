@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:32:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/23 13:40:01 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/28 11:35:01 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_list	*list_gen(int argc, int cont, char **argv, t_list *a)
 	char	**list2;
 
 	i = 0;
-	l = 1;
+	l = 2;
 	if (argc == 2)
 		list2 = ft_split(argv[1], ' ');
 	else
@@ -77,7 +77,6 @@ t_list	*list_gen(int argc, int cont, char **argv, t_list *a)
 	}
 	atoi_check(list2[i]);
 	a = ft_lstnew(atoi(list2[i]), l - 1);
-	printf("id: %d, num: %d\n", a->index, a->num);
 	i++;
 	while ((i - 1 <= cont && list2[i]) || (i < argc && list2[i]))
 	{
@@ -108,4 +107,11 @@ int	lista(int argc, char**argv)
 			cont++;
 	}
 	return (cont);
+}
+
+int	absolute(int num)
+{
+	if (num < 0)
+		num *= -1;
+	return (num);
 }

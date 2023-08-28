@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:53:07 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/23 13:39:28 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/28 13:41:51 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	addback(t_list	*list, int value, int id)
 	c->index = id;
 	c->next = NULL;
 	list->next = c;
-	printf("id: %d, num: %d\n", c->index, c->num);
 }
 
 t_list	*ft_lstnew(int num, int id)
@@ -94,12 +93,14 @@ long	ft_atoil(const char *str)
 
 int	ft_lstsize(t_list *lst)
 {
-	unsigned int	i;
+	t_list	*tmp;
+	int		i;
 
-	i = 1;
-	while (lst->next != NULL)
+	i = 0;
+	tmp = lst;
+	while (tmp != NULL)
 	{
-		lst = lst->next;
+		tmp = tmp->next;
 		i++;
 	}
 	return (i);
