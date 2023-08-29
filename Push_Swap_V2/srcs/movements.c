@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:50:43 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/28 17:22:17 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:57:23 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	push(t_list **list1, t_list **list2, char type)
 		write(1, "pb\n", 4);
 }
 
-void	make_move(t_list **a, t_list **b, int rel, int maxmin)
+void	make_move(t_list **a, t_list **b, int rel)
 {
 	if (*b && ft_lstsize(*b) > 1)
 	{
@@ -107,7 +107,11 @@ void	make_move(t_list **a, t_list **b, int rel, int maxmin)
 			rel--;
 		}
 	}
-	push(b, a, 'a');
-	if (maxmin == -1)
+	if ((*b)->maxmin == -1)
+	{
+		push(b, a, 'a');
 		rotate(a, 'a');
+	}
+	else
+		push(b, a, 'a');
 }

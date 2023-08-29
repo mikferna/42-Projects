@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:53:07 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/28 13:41:51 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/29 12:10:14 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,22 @@ int	ft_lstsize(t_list *lst)
 	tmp = lst;
 	while (tmp != NULL)
 	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_printlist(t_list *lst)
+{
+	t_list	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = lst;
+	while (tmp != NULL)
+	{
+		printf("%d\n", tmp->num);
 		tmp = tmp->next;
 		i++;
 	}

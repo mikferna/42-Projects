@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:52:05 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/28 17:22:34 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:59:54 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ void	algorithm(t_list **lst_a, t_list **lst_b)
 {
 	int	len;
 
+	lst_a = indexor(lst_a);
+	printf("===========\n");
+	ft_printlist(*lst_a);
+	printf("Num = [%d]\n", (*lst_a)->num);
+	printf("Index = [%d]\n", (*lst_a)->index);
+	printf("===========\n");
 	len = ft_lstsize(*lst_a);
 	if (len == 2)
 		swap(lst_a, 'a');
@@ -57,15 +63,29 @@ void	three_nbr(t_list **list, char type)
 void	five_nbr(t_list **list_a, t_list **list_b)
 {
 	int		i;
-	int		max;
-	int		min;
-	t_list	*temp;
 
 	i = ft_lstsize(*list_a);
-	temp = NULL;
+	*list_b = NULL;
+	ft_printlist(*list_a);
 	while ((*list_a)->index <= i / 2)
-		push(list_a, &temp, 'b');
-	*list_b = temp;
+		push(list_a, list_b, 'b');
+	moves(list_a, list_b, 0, 0);
+	while ((*list_a)->index <= i / 2)
+		rotate(list_a, 'a');
+	while ((*list_a)->index > i / 2)
+		push(list_a, list_b, 'b');
+	moves(list_a, list_b, 0, 0);
+	while ((*list_a)->index != 0)
+		rotate(list_a, 'a');
+	ft_printlist(*list_a);
+	
+	//fallo aqui es que los index estan mal, el como los paso a b, tengo que cambiar eso para que me los haga en orden, no por mitades
+}
+
+void	moves(t_list **list_a, t_list**list_b, int min, int max)
+{
+	t_list	*temp;
+
 	while (*list_b)
 	{
 		relmaxmin(*list_b);
@@ -79,8 +99,8 @@ void	five_nbr(t_list **list_a, t_list **list_b)
 			temp = temp->next;
 		}
 		if (absolute(max) > absolute(min))
-			make_move(list_a, list_b, min, -1);
+			make_move(list_a, list_b, min);
 		else
-			make_move(list_a, list_b, max, 1);
+			make_move(list_a, list_b, max);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:11:14 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/28 14:04:27 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:55:52 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,21 @@ void	swap(t_list **list, char type);
 void	rotate(t_list **list, char type);
 void	revrotate(t_list **list, char type);
 void	push(t_list **list1, t_list **list2, char type);
-void	make_move(t_list **a, t_list **b, int rel, int maxmin);
+void	make_move(t_list **a, t_list **b, int rel);
 
 ///*-doublemovements.c-*/
 void	doubleswap(t_list **list1, t_list **list2);
 void	doublerotate(t_list **list1, t_list **list2);
 void	doublerevrotate(t_list **list1, t_list **list2);
+t_list	**indexor(t_list **a);
 
 ///*-algorithm.c-*/
 void	algorithm(t_list **lst_a, t_list **lst_b);
 void	three_nbr(t_list **list, char type);
 void	five_nbr(t_list **list_a, t_list **list_b);
+void	moves(t_list **list_a, t_list**list_b, int min, int max);
+
+
+int		ft_printlist(t_list *lst);
 
 #endif

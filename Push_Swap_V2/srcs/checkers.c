@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:32:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/28 11:35:01 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:55:29 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,9 @@ void	checker_characters(int argc, char **argv)
 t_list	*list_gen(int argc, int cont, char **argv, t_list *a)
 {
 	int		i;
-	int		l;
 	char	**list2;
 
 	i = 0;
-	l = 2;
 	if (argc == 2)
 		list2 = ft_split(argv[1], ' ');
 	else
@@ -76,14 +74,13 @@ t_list	*list_gen(int argc, int cont, char **argv, t_list *a)
 		i++;
 	}
 	atoi_check(list2[i]);
-	a = ft_lstnew(atoi(list2[i]), l - 1);
+	a = ft_lstnew(atoi(list2[i]), 0);
 	i++;
 	while ((i - 1 <= cont && list2[i]) || (i < argc && list2[i]))
 	{
 		atoi_check(list2[i]);
-		addback(a, atoi(list2[i]), l);
+		addback(a, atoi(list2[i]), 0);
 		i++;
-		l++;
 	}
 	return (a);
 }
