@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:53:07 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/29 12:10:14 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:10:49 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,32 @@ int	ft_printlist(t_list *lst)
 	tmp = lst;
 	while (tmp != NULL)
 	{
-		printf("%d\n", tmp->num);
+		printf("%d, id = %d\n", tmp->num, tmp->index);
 		tmp = tmp->next;
 		i++;
 	}
 	return (i);
+}
+
+
+int	ft_isordered(t_list *lst)
+{
+	t_list	*now;
+	t_list	*next;
+	int		i;
+
+	i = 0;
+	next = lst->next;
+	now = lst;
+	while (next != NULL)
+	{
+		if (next->num < now->num)
+		{	
+			ft_exit_2("list not ordered\n");
+		}
+		now = next;
+		next = next->next;
+	}
+	//printf("ok\n");
+	return (0);
 }

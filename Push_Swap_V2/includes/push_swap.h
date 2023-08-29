@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:11:14 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/29 14:55:52 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:09:13 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	three_nbr(t_list **list, char type);
 void	five_nbr(t_list **list_a, t_list **list_b);
 void	moves(t_list **list_a, t_list**list_b, int min, int max);
 
-
 int		ft_printlist(t_list *lst);
+int		ft_isordered(t_list *lst);
 
 #endif

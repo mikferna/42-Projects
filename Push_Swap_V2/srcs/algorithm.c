@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:52:05 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/29 14:59:54 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:10:59 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ void	algorithm(t_list **lst_a, t_list **lst_b)
 	int	len;
 
 	lst_a = indexor(lst_a);
-	printf("===========\n");
-	ft_printlist(*lst_a);
-	printf("Num = [%d]\n", (*lst_a)->num);
-	printf("Index = [%d]\n", (*lst_a)->index);
-	printf("===========\n");
+	//printf("===========\n");
+	//ft_printlist(*lst_a);
+	//printf("Num = [%d]\n", (*lst_a)->num);
+	//printf("Index = [%d]\n", (*lst_a)->index);
+	//printf("===========\n");
 	len = ft_lstsize(*lst_a);
 	if (len == 2)
 		swap(lst_a, 'a');
 	else if (len == 3)
 		three_nbr(lst_a, 'a');
-	else if (len == 6)
+	else if (len > 6)
 		five_nbr(lst_a, lst_b);
 	//else
 	//	big_nbr(lst_a, lst_b);
@@ -63,23 +63,40 @@ void	three_nbr(t_list **list, char type)
 void	five_nbr(t_list **list_a, t_list **list_b)
 {
 	int		i;
+	int		l;
 
 	i = ft_lstsize(*list_a);
+	l = 0;
 	*list_b = NULL;
-	ft_printlist(*list_a);
-	while ((*list_a)->index <= i / 2)
-		push(list_a, list_b, 'b');
+	while (l < i / 2)
+	{
+		if ((*list_a)->index < i / 2)
+		{
+			push(list_a, list_b, 'b');
+			l++;
+		}
+		else
+			rotate(list_a, 'a');
+	}
 	moves(list_a, list_b, 0, 0);
-	while ((*list_a)->index <= i / 2)
+	l = 0;
+	while (l < i / 2)
+	{
+		if ((*list_a)->index >= i / 2)
+		{
+			push(list_a, list_b, 'b');
+			l++;
+		}
+		else
+			rotate(list_a, 'a');
+	}
+	while ((*list_a)->index != 0)
 		rotate(list_a, 'a');
-	while ((*list_a)->index > i / 2)
-		push(list_a, list_b, 'b');
 	moves(list_a, list_b, 0, 0);
 	while ((*list_a)->index != 0)
 		rotate(list_a, 'a');
-	ft_printlist(*list_a);
-	
-	//fallo aqui es que los index estan mal, el como los paso a b, tengo que cambiar eso para que me los haga en orden, no por mitades
+	//ft_printlist(*list_a);
+	//ft_isordered(*list_a);
 }
 
 void	moves(t_list **list_a, t_list**list_b, int min, int max)
