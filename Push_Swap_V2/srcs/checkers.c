@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:32:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/29 14:55:29 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:01:57 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_list	*checker(int argc, char **argv)
 	cont = lista(argc, argv);
 	a = list_gen(argc, cont, argv, a);
 	if (node_numcheck(a) == 2)
-		ft_exit_2("Numeros Repetidos");
+		ft_exit_2("");
 	if (node_numcheck(a) == 1)
 	{
 		write(1, "\n", 2);
@@ -43,13 +43,13 @@ void	checker_characters(int argc, char **argv)
 		while (argv[l][i])
 		{
 			if (argv[l][i] == ' ' && argc > 2)
-				ft_exit_2("Caracteres Erroneos");
+				ft_exit_2("");
 			if ((argv[l][i] < '0' || argv[l][i] > '9') && argv[l][i] != ' ')
 			{
 				if (argv[l][i] != '-')
-					ft_exit_2("Caracteres Erroneos");
+					ft_exit_2("");
 				if (argv[l][i + 1] == '-')
-					ft_exit_2("Caracteres Erroneos");
+					ft_exit_2("");
 			}
 			i++;
 		}
@@ -69,7 +69,7 @@ t_list	*list_gen(int argc, int cont, char **argv, t_list *a)
 	{
 		list2 = malloc(sizeof(char *) * argc);
 		if (list2 == NULL)
-			ft_exit_2("Error Malloc List");
+			ft_exit_2("");
 		list2 = argv;
 		i++;
 	}

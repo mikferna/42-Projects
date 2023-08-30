@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:52:05 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/29 17:10:59 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/30 14:02:50 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,13 @@ void	algorithm(t_list **lst_a, t_list **lst_b)
 		swap(lst_a, 'a');
 	else if (len == 3)
 		three_nbr(lst_a, 'a');
-	else if (len > 6)
+	else if (len > 3 && len <= 5)
 		five_nbr(lst_a, lst_b);
+	else if (len > 6 && len < 101)
+		mid_nbr(lst_a, lst_b);
 	//else
 	//	big_nbr(lst_a, lst_b);
+	//ft_printlist(*lst_a);
 }
 
 void	three_nbr(t_list **list, char type)
@@ -60,11 +63,11 @@ void	three_nbr(t_list **list, char type)
 		revrotate(list, type);
 }
 
-void	five_nbr(t_list **list_a, t_list **list_b)
+void	mid_nbr(t_list **list_a, t_list **list_b)
 {
 	int		i;
 	int		l;
-
+ 
 	i = ft_lstsize(*list_a);
 	l = 0;
 	*list_b = NULL;
@@ -79,8 +82,7 @@ void	five_nbr(t_list **list_a, t_list **list_b)
 			rotate(list_a, 'a');
 	}
 	moves(list_a, list_b, 0, 0);
-	l = 0;
-	while (l < i / 2)
+	while (l < i)
 	{
 		if ((*list_a)->index >= i / 2)
 		{
