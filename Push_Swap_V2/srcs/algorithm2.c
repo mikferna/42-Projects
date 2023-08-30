@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:21:22 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/30 12:52:25 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/30 15:57:54 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	five_nbr(t_list **list_a, t_list **list_b)
 	len = ft_lstsize(*list_a);
 	i = 0;
 	num = 0;
+	//ft_printlist(*list_a);
 	while (i < len - 3)
 	{
 		if ((*list_a)->index < 2 && (*list_a)->index == num)
@@ -32,7 +33,9 @@ void	five_nbr(t_list **list_a, t_list **list_b)
 		else
 			rotate(list_a, 'a');
 	}
+	//ft_printlist(*list_a);
 	three_nbr(list_a, 'a');
+	//ft_printlist(*list_a);
 	moves(list_a, list_b, 0, 0);
 	while ((*list_a)->index != 0)
 		rotate(list_a, 'a');

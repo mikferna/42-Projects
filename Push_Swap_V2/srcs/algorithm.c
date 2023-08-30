@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:52:05 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/30 14:02:50 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/30 16:31:09 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,19 @@ void	algorithm(t_list **lst_a, t_list **lst_b)
 	//printf("Index = [%d]\n", (*lst_a)->index);
 	//printf("===========\n");
 	len = ft_lstsize(*lst_a);
+	//ft_printlist(*lst_a);
 	if (len == 2)
 		swap(lst_a, 'a');
 	else if (len == 3)
 		three_nbr(lst_a, 'a');
 	else if (len > 3 && len <= 5)
 		five_nbr(lst_a, lst_b);
-	else if (len > 6 && len < 101)
+	else if (len > 5 && len < 101)
 		mid_nbr(lst_a, lst_b);
 	//else
 	//	big_nbr(lst_a, lst_b);
 	//ft_printlist(*lst_a);
+	//ft_isordered(*lst_a);
 }
 
 void	three_nbr(t_list **list, char type)
@@ -54,12 +56,12 @@ void	three_nbr(t_list **list, char type)
 	}
 	else if (first->num > second->num && second->num < third->num)
 		rotate(list, type);
-	else if (first->num < second->num && second->num > third->num)
+	else if (first->num < second->num && second->num > third->num && first->num < third->num)
 	{
 		swap(list, type);
 		rotate(list, type);
 	}
-	else if (first->num < second->num && second->num > third->num)
+	else if (first->num < second->num && second->num > third->num && first->num > third->num)
 		revrotate(list, type);
 }
 

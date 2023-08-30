@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:53:07 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/30 13:55:39 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/30 16:03:19 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int	ft_isordered(t_list *lst)
 	{
 		if (next->num < now->num)
 		{	
-			ft_exit_2("");
+			ft_exit_2("Not Ordered\n");
 		}
 		now = next;
 		next = next->next;
