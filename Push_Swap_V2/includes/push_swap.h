@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:11:14 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/30 12:25:08 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/31 13:35:37 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_list	**indexor(t_list **a);
 void	algorithm(t_list **lst_a, t_list **lst_b);
 void	three_nbr(t_list **list, char type);
 void	mid_nbr(t_list **list_a, t_list **list_b);
+void	big_nbr(t_list **list_a, t_list **list_b);
 void	moves(t_list **list_a, t_list**list_b, int min, int max);
 
 ///*-algorithm2.c-*/
