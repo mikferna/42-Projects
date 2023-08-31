@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 17:50:43 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/29 16:55:24 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/30 17:14:48 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	swap(t_list **list, char type)
 		(*list) = temp2;
 	}
 	if (type == 'a')
-		write(1, "sa\n", 4);
+		write(1, "sa\n", 3);
 	if (type == 'b')
-		write(1, "sb\n", 4);
+		write(1, "sb\n", 3);
 }
 
 void	rotate(t_list **list, char type)
@@ -47,9 +47,9 @@ void	rotate(t_list **list, char type)
 		(*list) = temp2;
 	}
 	if (type == 'a')
-		write(1, "ra\n", 4);
+		write(1, "ra\n", 3);
 	if (type == 'b')
-		write(1, "rb\n", 4);
+		write(1, "rb\n", 3);
 }
 
 void	revrotate(t_list **list, char type)
@@ -68,9 +68,9 @@ void	revrotate(t_list **list, char type)
 		(*list) = temp2;
 	}
 	if (type == 'a')
-		write(1, "rra\n", 5);
+		write(1, "rra\n", 4);
 	if (type == 'b')
-		write(1, "rrb\n", 5);
+		write(1, "rrb\n", 4);
 }
 
 void	push(t_list **list1, t_list **list2, char type)
@@ -87,9 +87,9 @@ void	push(t_list **list1, t_list **list2, char type)
 		(*list2)->relpos = 0;
 	}
 	if (type == 'a')
-		write(1, "pa\n", 4);
+		write(1, "pa\n", 3);
 	if (type == 'b')
-		write(1, "pb\n", 4);
+		write(1, "pb\n", 3);
 }
 
 void	make_move(t_list **a, t_list **b, int rel)

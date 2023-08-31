@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:32:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/30 16:18:35 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/08/31 13:16:16 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,12 @@ int	lista(int argc, char**argv)
 	{
 		while (argv[1][i])
 		{
-			if (argv[1][i] == ' ' && (argv[1][i - 1] > '0' && argv[1][i] < '9'))
+			if (argv[1][i] == ' ' &&
+				(argv[1][i - 1] >= '0' && argv[1][i - 1] <= '9'))
 				cont++;
 			i++;
 		}
-		if (argv[1][i - 1] > '0' && argv[1][i - 1] < '9')
+		if (argv[1][i - 1] >= '0' && argv[1][i - 1] <= '9')
 			cont++;
 	}
 	return (cont);

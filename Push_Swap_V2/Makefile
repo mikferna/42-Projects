@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/09 15:08:09 by mikferna          #+#    #+#              #
-#    Updated: 2023/08/30 12:25:20 by mikferna         ###   ########.fr        #
+#    Updated: 2023/08/30 17:56:56 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ NAME			=	push_swap
 DIR_OBJS		=	objs/
 CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra -g3 -fsanitize=address
-//LINKS			=	-L . -lmlx -framework OpenGL -framework AppKit
 
 SRCS			=	srcs/main.c							\
 					srcs/checkers.c						\
