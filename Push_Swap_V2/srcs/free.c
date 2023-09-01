@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/07 11:10:10 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/01 14:55:47 by mikferna         ###   ########.fr       */
+/*   Created: 2023/09/01 12:48:10 by mikferna          #+#    #+#             */
+/*   Updated: 2023/09/01 12:48:54 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+void	free_split(char **input)
 {
-	t_list	*a;
-	t_list	*b;
+	int	i;
 
-	b = NULL;
-	if (argc < 2)
-		exit(0);
-	else
+	i = 0;
+	while (input[i])
 	{
-		a = checker(argc, argv);
-		algorithm(&a, &b);
-		free_list(a);
+		free (input[i]);
+		i++;
+	}
+	free (input);
+}
+
+void	free_list(t_list *stack)
+{
+	t_list	*temp;
+
+	while (stack)
+	{
+		temp = stack;
+		stack = stack->next;
+		free (temp);
 	}
 }

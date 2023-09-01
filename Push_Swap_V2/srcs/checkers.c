@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:32:32 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/31 13:16:16 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/01 15:10:11 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ t_list	*list_gen(int argc, int cont, char **argv, t_list *a)
 {
 	int		i;
 	char	**list2;
+	int		j;
 
 	i = 0;
+	j = 0;
 	if (argc == 2)
 		list2 = ft_split(argv[1], ' ');
 	else
@@ -67,7 +69,11 @@ t_list	*list_gen(int argc, int cont, char **argv, t_list *a)
 		list2 = malloc(sizeof(char *) * argc);
 		if (list2 == NULL)
 			ft_exit_2("Error\n");
-		list2 = argv;
+		while (j < argc)
+		{
+			list2[j] = argv[j];
+			j++;
+		}
 		i++;
 	}
 	atoi_check(list2[i]);
@@ -79,6 +85,7 @@ t_list	*list_gen(int argc, int cont, char **argv, t_list *a)
 		addback(a, atoi(list2[i]), 0);
 		i++;
 	}
+	free_split(list2);
 	return (a);
 }
 

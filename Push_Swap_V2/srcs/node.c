@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 13:53:07 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/30 16:03:19 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/01 15:03:16 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int	node_numcheck(t_list	*list)
 	t_list	*dos;
 
 	uno = list;
-	dos = uno;
 	while (uno->next != NULL)
 	{
+		dos = uno;
 		while (dos->next != NULL)
 		{
 			dos = dos->next;
@@ -55,7 +55,6 @@ int	node_numcheck(t_list	*list)
 				return (2);
 		}
 		uno = uno->next;
-		dos = uno;
 	}
 	temp_num = list->num;
 	while (list->next != NULL)
@@ -104,43 +103,4 @@ int	ft_lstsize(t_list *lst)
 		i++;
 	}
 	return (i);
-}
-
-int	ft_printlist(t_list *lst)
-{
-	t_list	*tmp;
-	int		i;
-
-	i = 0;
-	tmp = lst;
-	while (tmp != NULL)
-	{
-		printf("%d, id = %d\n", tmp->num, tmp->index);
-		tmp = tmp->next;
-		i++;
-	}
-	return (i);
-}
-
-
-int	ft_isordered(t_list *lst)
-{
-	t_list	*now;
-	t_list	*next;
-	int		i;
-
-	i = 0;
-	next = lst->next;
-	now = lst;
-	while (next != NULL)
-	{
-		if (next->num < now->num)
-		{	
-			ft_exit_2("Not Ordered\n");
-		}
-		now = next;
-		next = next->next;
-	}
-	printf("ok\n");
-	return (0);
 }

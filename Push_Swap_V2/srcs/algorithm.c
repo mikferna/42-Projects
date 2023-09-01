@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:52:05 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/31 17:56:38 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/01 13:37:19 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ void	algorithm(t_list **lst_a, t_list **lst_b)
 		mid_nbr(lst_a, lst_b);
 	else
 		big_nbr(lst_a, lst_b);
-	//ft_printlist(*lst_a);
-	//ft_isordered(*lst_a);
 }
 
 void	three_nbr(t_list **list, char type)
@@ -69,6 +67,13 @@ void	mid_nbr(t_list **list_a, t_list **list_b)
 	i = ft_lstsize(*list_a);
 	l = 0;
 	*list_b = NULL;
+	append(list_a, list_b, l, i);
+	while ((*list_a)->index != 0)
+		rotate(list_a, 'a');
+}
+
+void	append(t_list **list_a, t_list **list_b, int l, int i)
+{
 	while (l < i / 2)
 	{
 		if ((*list_a)->index < i / 2)
@@ -93,8 +98,6 @@ void	mid_nbr(t_list **list_a, t_list **list_b)
 	while ((*list_a)->index != 0)
 		rotate(list_a, 'a');
 	moves(list_a, list_b, 0, 0);
-	while ((*list_a)->index != 0)
-		rotate(list_a, 'a');
 }
 
 void	moves(t_list **list_a, t_list**list_b, int min, int max)

@@ -6,14 +6,14 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/09 15:08:09 by mikferna          #+#    #+#              #
-#    Updated: 2023/08/30 17:56:56 by mikferna         ###   ########.fr        #
+#    Updated: 2023/09/01 15:03:29 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			=	push_swap
 DIR_OBJS		=	objs/
 CC				=	gcc
-CFLAGS			=	-Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS			=	-Wall -Werror -Wextra #-g3 -fsanitize=address
 
 SRCS			=	srcs/main.c							\
 					srcs/checkers.c						\
@@ -23,6 +23,7 @@ SRCS			=	srcs/main.c							\
 					srcs/doublemovements.c				\
 					srcs/algorithm.c					\
 					srcs/algorithm2.c					\
+					srcs/free.c							\
 					srcs/libft/ft_split.c				\
 					srcs/libft/ft_strlen.c				\
 					srcs/libft/ft_substr.c				\
