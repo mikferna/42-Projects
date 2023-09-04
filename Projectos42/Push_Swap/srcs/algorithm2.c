@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 12:21:22 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/01 14:47:10 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/04 17:24:07 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,20 @@ void	five_nbr(t_list **list_a, t_list **list_b)
 {
 	int	len;
 	int	i;
-	int	num;
 
 	len = ft_lstsize(*list_a);
 	i = 0;
-	num = 0;
 	while (i < len - 3)
 	{
-		if ((*list_a)->index < 2 && (*list_a)->index == num)
+		if ((*list_a)->index < 2 && len == 5)
 		{
 			push(list_a, list_b, 'b');
 			i++;
-			num++;
+		}
+		else if ((*list_a)->index < 1 && len == 4)
+		{
+			push(list_a, list_b, 'b');
+			i++;
 		}
 		else
 			rotate(list_a, 'a');
@@ -97,7 +99,7 @@ void	append_big_2(t_list **list_a, t_list **list_b, int i, int l)
 			rotate(list_a, 'a');
 	}
 	while ((*list_a)->index != 0)
-		rotate(list_a, 'a');
+		revrotate(list_a, 'a');
 	moves(list_a, list_b, 0, 0);
 	while (l < i)
 	{

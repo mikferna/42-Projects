@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 11:52:05 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/01 16:13:44 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:24:37 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	moves(t_list **list_a, t_list**list_b, int min, int max)
 				min = temp->relpos;
 			temp = temp->next;
 		}
-		if (absolute(max) > absolute(min))
+		if (absolute(max) > absolute(min + 1))
 			make_move(list_a, list_b, min);
 		else
 			make_move(list_a, list_b, max);

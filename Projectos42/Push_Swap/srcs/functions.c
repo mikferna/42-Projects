@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 16:50:19 by mikferna          #+#    #+#             */
-/*   Updated: 2023/08/30 16:03:22 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:18:21 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ void	findmaxmin(t_list *list)
 
 void	relmaxmin(t_list *list)
 {
-	relative_calc(list);
 	findmaxmin(list);
+	relative_calc(list);
 }

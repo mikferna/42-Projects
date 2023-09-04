@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/09 15:08:09 by mikferna          #+#    #+#              #
-#    Updated: 2023/09/01 17:46:30 by mikferna         ###   ########.fr        #
+#    Updated: 2023/09/04 16:16:37 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,11 @@ NAME			=	push_swap
 DIR_OBJS		=	objs/
 CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra #-g3 -fsanitize=address
+
+RED = \033[1;31m
+GREEN = \033[1;32m
+YELLOW = \033[1;33m
+DEFAULT = \033[0m
 
 SRCS			=	srcs/main.c							\
 					srcs/checkers.c						\
@@ -43,24 +48,23 @@ $(DIR_OBJS)%.o : %.c
 	@mkdir -p $(DIR_OBJS)/srcs/libft
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME) : print $(PREFIXED)
+$(NAME) : $(PREFIXED)
+	@echo "\n$(YELLOW)---------- Compilando Ficheros de Projecto ---------$(RESET)\n"
 	@$(CC) $(CFLAGS) $(LINKS) -o $(NAME) $(PREFIXED)
 	@echo "\n${GREEN}Mandatory part compiled!${RESET}\n"
 
 # ========== FUNCTIONS ==========
 
-print:
-	@echo "\n$(YELLOW)---------- Compilando Ficheros de Projecto ---------$(RESET)\n"
-
 all: $(NAME)
 
 clean:
 	@rm -rf $(OBJS) $(DIR_OBJS)
-	@echo "\n${BLUE}Cleaned!${RESET}\n"
+	@echo "$(YELLOW)Object files deleted!$(DEFAULT)"
 
 fclean: clean
 	@rm -f $(NAME)
+	@echo "$(RED)All deleted!$(DEFAULT)"
 
 re: fclean all
 
-.PHONY: all clean fclean re print
+.PHONY: all clean fclean re
