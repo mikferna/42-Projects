@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 11:10:10 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/04 13:33:56 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:27:16 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int	main(int argc, char **argv)
 		algorithm(&a, &b);
 		free_list(a);
 	}
+	return (0);
 }
