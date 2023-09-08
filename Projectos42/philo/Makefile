@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 16:06:29 by mikferna          #+#    #+#              #
-#    Updated: 2023/09/06 13:51:37 by mikferna         ###   ########.fr        #
+#    Updated: 2023/09/08 13:08:37 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ PREFIXED		=	$(addprefix $(DIR_OBJS), $(OBJS))
 
 $(DIR_OBJS)%.o : %.c
 	@mkdir -p $(DIR_OBJS)/srcs
-	@mkdir -p $(DIR_OBJS)/srcs/libft
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(PREFIXED)

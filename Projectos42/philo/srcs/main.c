@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:06:18 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/06 13:58:42 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/08 13:39:47 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 int	main(int argc, char **argv)
 {
-	t_rules	rules;
+	t_rules		rules;
 
 	(void)argv;
 	if (argc != 5 && argc != 6)
 		ft_exit_2("Cantidad de argumentos incorrecta");
 	if (init(&rules, argv))
 		ft_exit_2("Rule Error");
+	printf("Llego al final del main\n");
 	return (0);
 }
