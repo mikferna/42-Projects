@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 16:06:29 by mikferna          #+#    #+#              #
-#    Updated: 2023/09/08 13:08:37 by mikferna         ###   ########.fr        #
+#    Updated: 2023/09/08 14:09:54 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ DEFAULT = \033[0m
 SRCS			=	srcs/main.c							\
 					srcs/utils.c						\
 					srcs/init.c							\
+					srcs/philo.c						\
 
 
 OBJS			=	$(SRCS:.c=.o)

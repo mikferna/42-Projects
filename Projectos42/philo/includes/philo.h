@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:06:16 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/08 13:47:19 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/08 14:12:55 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ int		ft_atoi(const char *str);
 int		init(t_rules *rules, char **argv);
 int		initiate_mutex(t_rules *rules);
 int		initiate_philos(t_rules *rules);
+
+///*-philo.c-*/
+void	philo(t_rules *rules);
 
 #endif
