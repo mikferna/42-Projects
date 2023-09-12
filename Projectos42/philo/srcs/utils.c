@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:19:40 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/06 14:02:20 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/12 12:15:56 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,12 @@ int	ft_atoi(const char *str)
 			return (-1);
 	}
 	return ((int)(n * sign));
+}
+
+long long	timestamp(void)
+{
+	struct timeval	t;
+
+	gettimeofday(&t, NULL);
+	return ((t.tv_sec * 1000) + (t.tv_usec / 1000));
 }
