@@ -54,6 +54,7 @@ int			main(int argc, char **argv);
 void		ft_exit_2(char *str);
 int			ft_atoi(const char *str);
 long long	get_time(void);
+void		action_t_checker(long long time, t_rules *rules);
 void		print_actions(t_rules *rules, int id, char *str);
 
 ///*-init.c-*/

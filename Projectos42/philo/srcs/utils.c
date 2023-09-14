@@ -46,6 +46,19 @@ int	ft_atoi(const char *str)
 	return ((int)(n * sign));
 }
 
+void	action_t_checker(long long time, t_rules *r)
+{
+	long long i;
+
+	i = get_time();
+	while (!(r->died))
+	{
+		if ((get_time() - i) >= time)
+			break ;
+		usleep(50);
+	}
+}
+
 long long	get_time(void)
 {
 	struct timeval	t;
@@ -64,4 +77,5 @@ void	print_actions(t_rules *rules, int id, char *str)
 		printf("%s\n", str);
 	}
 	pthread_mutex_unlock(&(rules->write));
+	return ;
 }

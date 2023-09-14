@@ -26,7 +26,7 @@ int	init(t_rules *rules, char **argv)
 	if (argv[5])
 	{
 		rules->nb_eat = ft_atoi(argv[5]);
-		if (rules->nb_eat < 0)
+		if (rules->nb_eat <= 0)
 			return (1);
 	}
 	else

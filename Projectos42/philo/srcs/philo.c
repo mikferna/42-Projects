@@ -22,29 +22,31 @@ void	philo(t_rules *rules)
 	rules->start_time = get_time();
 	while (i < rules->nb_philo)
 	{
+		philo[i].last_eat = get_time();
 		if (pthread_create(&(philo[i].t_id), NULL, philosophers, &(philo[i])))
 			ft_exit_2("Pthread Error");
-		philo[i].last_eat = get_time();
 		i++;
 	}
 }
 
 void	*philosophers(void *vphilo)
 {
-	int			i;
 	t_philos	*ph;
 	t_rules		*r;
 
-	i = 0;
 	ph = (t_philos *)vphilo;
 	r = ph->rules;
+	if (ph->philo_id % 2)
+		usleep(15000);
 	//printf("Philo ID -> [%d]\n", ph->philo_id);
 	while (!r->died)
 	{
 		eat_funct(ph);
 		if (r->all_ate)
 			break ;
-		usleep(10000);
+		print_actions(r, ph->philo_id, "is sleeping");
+		action_t_checker(r->time_sleep, r);
+		print_actions(r, ph->philo_id, "is thinking");
 	}
 	return (NULL);
 }
@@ -60,8 +62,10 @@ void	eat_funct(t_philos *philo)
 	print_actions(r, philo->philo_id, "has taken a fork");
 	pthread_mutex_lock(&(r->eating));
 	print_actions(r, philo->philo_id, "is eating");
-	//usleep(10);
+	philo->last_eat = get_time();
 	pthread_mutex_unlock(&(r->eating));
+	action_t_checker(r->time_eat, r);
+	philo->n_eat += 1;
 	pthread_mutex_unlock(&(r->forks[philo->l_fork_id]));
 	pthread_mutex_unlock(&(r->forks[philo->r_fork_id]));
 }
