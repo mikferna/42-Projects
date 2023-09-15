@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:06:16 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/14 13:20:52 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:28:15 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ int			initiate_philos(t_rules *rules);
 void		philo(t_rules *rules);
 void		*philosophers(void *vphilo);
 void		eat_funct(t_philos *philo);
+void		terminator(t_rules *r, t_philos *ph);
+void		dead_eat_checker(t_rules *r, t_philos *ph);
 
 #endif

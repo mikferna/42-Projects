@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:09:36 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/14 15:48:27 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:34:03 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	philo(t_rules *rules)
 			ft_exit_2("Pthread Error");
 		i++;
 	}
+	dead_eat_checker(rules, philo);
+	terminator(rules, philo);
 }
 
 void	*philosophers(void *vphilo)
@@ -37,8 +39,7 @@ void	*philosophers(void *vphilo)
 	ph = (t_philos *)vphilo;
 	r = ph->rules;
 	if (ph->philo_id % 2)
-		usleep(15000);
-	//printf("Philo ID -> [%d]\n", ph->philo_id);
+		usleep(10000);
 	while (!r->died)
 	{
 		eat_funct(ph);
@@ -68,4 +69,53 @@ void	eat_funct(t_philos *philo)
 	philo->n_eat += 1;
 	pthread_mutex_unlock(&(r->forks[philo->l_fork_id]));
 	pthread_mutex_unlock(&(r->forks[philo->r_fork_id]));
+}
+
+void	terminator(t_rules *r, t_philos *ph)
+{
+	int	i;
+
+	i = 0;
+	while (i < r->nb_philo)
+	{
+		pthread_join(ph[i].t_id, NULL);
+		i++;
+	}
+	i = 0;
+	while (i < r->nb_philo)
+	{
+		pthread_mutex_destroy(&r->forks[i]);
+		i++;
+	}
+	pthread_mutex_destroy(&r->eating);
+	pthread_mutex_destroy(&r->write);
+}
+
+void	dead_eat_checker(t_rules *r, t_philos *ph)
+{
+	int	i;
+
+	while (!r->all_ate)
+	{
+		i = 0;
+		while (i < r->nb_philo && !r->died)
+		{
+			pthread_mutex_lock(&r->eating);
+			if (ph->last_eat > r->time_death)
+			{
+				print_actions(r, ph->philo_id, "died");
+				r->died = 1;
+			}
+			pthread_mutex_unlock(&r->eating);
+			usleep(100);
+			i++;
+		}
+		if (r->died)
+			break ;
+		i = 0;
+		while (r->nb_eat != -1 && i < r->nb_philo && ph[i].n_eat >= r->nb_eat)
+			i++;
+		if (i == r->nb_philo)
+			r->all_ate = 1;
+	}
 }

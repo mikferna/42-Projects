@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:19:40 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/14 14:07:53 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/15 11:37:34 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_atoi(const char *str)
 
 void	action_t_checker(long long time, t_rules *r)
 {
-	long long i;
+	long long	i;
 
 	i = get_time();
 	while (!(r->died))
