@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 14:09:36 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/15 12:34:03 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/15 13:48:01 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	eat_funct(t_philos *philo)
 	print_actions(r, philo->philo_id, "has taken a fork");
 	pthread_mutex_lock(&(r->eating));
 	print_actions(r, philo->philo_id, "is eating");
-	philo->last_eat = get_time();
+	philo->last_eat = get_time() - r->start_time;
 	pthread_mutex_unlock(&(r->eating));
 	action_t_checker(r->time_eat, r);
 	philo->n_eat += 1;

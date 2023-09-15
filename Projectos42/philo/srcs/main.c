@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:06:18 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/14 12:41:17 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/15 13:46:09 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ int	main(int argc, char **argv)
 	if (init(&rules, argv))
 		ft_exit_2("Rule Error");
 	philo(&rules);
-	//printf("Llego al final del main\n");
 	return (0);
 }
