@@ -23,6 +23,8 @@ int	init(t_rules *rules, char **argv)
 	if (rules->nb_philo > 200 || rules->time_death < 0 || rules->time_eat < 0
 		|| rules->time_sleep < 0 || rules->nb_philo < 1)
 		return (1);
+	if (rules->nb_philo == 1)
+		ft_exit_2("0 1 has taken a fork\n0 1 died");
 	if (argv[5])
 	{
 		rules->nb_eat = ft_atoi(argv[5]);
@@ -67,6 +69,7 @@ int	initiate_philos(t_rules *rules)
 		rules->philo[i].last_eat = 0;
 		rules->philo[i].philo_id = i;
 		rules->philo[i].rules = rules;
+		rules->philo[i].n_eat = 0;
 		i++;
 	}
 	return (0);

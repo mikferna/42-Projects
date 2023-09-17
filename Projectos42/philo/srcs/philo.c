@@ -22,9 +22,9 @@ void	philo(t_rules *rules)
 	rules->start_time = get_time();
 	while (i < rules->nb_philo)
 	{
-		philo[i].last_eat = get_time();
 		if (pthread_create(&(philo[i].t_id), NULL, philosophers, &(philo[i])))
 			ft_exit_2("Pthread Error");
+		philo[i].last_eat = get_time();
 		i++;
 	}
 	dead_eat_checker(rules, philo);
@@ -39,7 +39,7 @@ void	*philosophers(void *vphilo)
 	ph = (t_philos *)vphilo;
 	r = ph->rules;
 	if (ph->philo_id % 2)
-		usleep(10000);
+		usleep(15000);
 	while (!r->died)
 	{
 		eat_funct(ph);
@@ -63,7 +63,7 @@ void	eat_funct(t_philos *philo)
 	print_actions(r, philo->philo_id, "has taken a fork");
 	pthread_mutex_lock(&(r->eating));
 	print_actions(r, philo->philo_id, "is eating");
-	philo->last_eat = get_time() - r->start_time;
+	philo->last_eat = get_time();
 	pthread_mutex_unlock(&(r->eating));
 	action_t_checker(r->time_eat, r);
 	philo->n_eat += 1;
@@ -79,11 +79,6 @@ void	terminator(t_rules *r, t_philos *ph)
 	while (i < r->nb_philo)
 	{
 		pthread_join(ph[i].t_id, NULL);
-		i++;
-	}
-	i = 0;
-	while (i < r->nb_philo)
-	{
 		pthread_mutex_destroy(&r->forks[i]);
 		i++;
 	}
@@ -101,7 +96,7 @@ void	dead_eat_checker(t_rules *r, t_philos *ph)
 		while (i < r->nb_philo && !r->died)
 		{
 			pthread_mutex_lock(&r->eating);
-			if (ph->last_eat > r->time_death)
+			if ((get_time() - ph->last_eat) > r->time_death)
 			{
 				print_actions(r, ph->philo_id, "died");
 				r->died = 1;
