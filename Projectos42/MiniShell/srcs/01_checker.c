@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:02:12 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/27 14:05:58 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/09/28 12:16:40 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,15 @@ int	check_redirections(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if ((s[i] == '<' || s[i] == '>' || s[i] == '|') && (check_right(s, s[i], 0) == 1))
+		//checker_sides esta mal
+		if ((s[i] == '<' || s[i] == '>' || s[i] == '|') && (check_sides(s, s[i], 0) == 1))
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int	check_right(char *s, char w, int i)
+int	check_sides(char *s, char w, int i)
 {
 	int chr;
 
