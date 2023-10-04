@@ -6,27 +6,23 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 13:59:02 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/29 11:34:02 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:45:57 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	init_structs(t_ldata **line)
-{
-	line = malloc(sizeof(t_ldata));
-}
-
 int	main(int argc, char **argv, char **envp)
 {
-	t_ldata *line;
+	t_ldata	*line;
+	t_env	*env;
 
 	if (argc != 1 || argv[1])
 	{
 		printf("This program does not accept arguments\n");
 		exit(1);
 	}
-	init_structs(&line);
+	init_structs(&line, &env, envp);
 	while (1)
 	{
 		line->inp_line = readline("minishell> ");
@@ -40,8 +36,13 @@ int	main(int argc, char **argv, char **envp)
 			add_history(line->inp_line);
 		else
 			continue ;
-		(void)envp;
-		//programa
+		minishell(line, env);
 	}
 	return (0);
+}
+
+void	init_structs(t_ldata **line, t_env **env, char **envp)
+{
+	line = malloc(sizeof(t_ldata));
+	get_env(envp, env);
 }

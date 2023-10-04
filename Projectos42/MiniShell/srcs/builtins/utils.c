@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env_gen.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/29 13:21:44 by mikferna          #+#    #+#             */
-/*   Updated: 2023/10/04 11:39:23 by mikferna         ###   ########.fr       */
+/*   Created: 2023/10/04 12:16:45 by mikferna          #+#    #+#             */
+/*   Updated: 2023/10/04 12:27:01 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-void	get_env(char **envp, t_env **env)
+char	*get_path(t_env *env, char *dir)
 {
-	int		i;
-	t_env	*temp;
-
-	*env = ft_lstnew(start_strchar(envp[0], '='), end_strchar(envp[0], '='));
-	temp = *env;
-	i = 1;
-	while (envp[i])
+	while (env)
 	{
-		env_addback(temp, start_strchar(envp[i], '='), end_strchar(envp[i], '='));
+		if (ft_strcmp(env->env_name, dir) == 0)
+			return (env->env);
+		env = env->next;
+	}
+	return (NULL);	
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	size_t	i;
+
+	i = 0;
+	while (s1[i] == s2[i])
+	{
+		if (s1[i] == '\0' && s2[i] == '\0')
+		{
+			ft_printf("strings finished\n"); 
+			return (0);
+		}
+		ft_printf("%c vs %c\n", s1[i], s2[i]);
 		i++;
 	}
+	return (s1[i] - s2[i]);
 }
- 

@@ -6,13 +6,13 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 15:15:54 by mikferna          #+#    #+#             */
-/*   Updated: 2023/09/29 15:53:39 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:36:13 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-void	addback(t_env	*list, char *str)
+void	env_addback(t_env	*list, char *str, char *str2)
 {
 	t_env	*c;
 
@@ -20,11 +20,12 @@ void	addback(t_env	*list, char *str)
 		list = list->next;
 	c = malloc(sizeof(t_env));
 	c->env = str;
+	c->env_name = str2;
 	c->next = NULL;
 	list->next = c;
 }
 
-t_env	*ft_lstnew(char *str)
+t_env	*ft_lstnew(char *str, char *str2)
 {
 	t_env	*new;
 
@@ -32,6 +33,7 @@ t_env	*ft_lstnew(char *str)
 	if (new == NULL)
 		return (NULL);
 	new->env = str;
+	new->env_name = str2;
 	new->next = NULL;
 	return (new);
 }
@@ -51,30 +53,49 @@ int	ft_lstsize(t_env *lst)
 	return (i);
 }
 
-char *stri(char *str, char c)
+char *start_strchar(char *str, char c)
 {
-	char	*str2;
-	int		i;
 	int		len;
+	int		i;
+	int		start;
+	char	*ret;
 
 	i = 0;
-	while (str && str[i] != c)
-		i++;
-	if (str && str[i] == '\0')
-	{
-		str2 = malloc(1);
-		if (str2 == NULL)
-			return NULL;
-		str2[0] = '\0';
-		return str2;
-	}
-	len = ft_strlen(str);
-	str2 = malloc(sizeof(char) * (len - i + 1));
-	if (str2 == NULL)
+	start = 0;
+	if (!str)
 		return NULL;
-	len = 0;
-	while (str && str[i])
-		str2[len++] = str[i++];
-	str2[len] = '\0';
-	return (str2);
+	len = ft_strlen(str);
+	while (str[i] && str[i] != c)
+		i++;
+	ret = (char *)malloc(sizeof(char) * (len - i));
+	i++;
+	if (!ret)
+		return NULL;
+	while (str[i])
+		ret[start++] = str[i++];
+	ret[start] = '\0';
+	return (ret);
+}
+
+char *end_strchar(char *str, char c)
+{
+	if (!str)
+		return NULL;
+	int length = 0;
+	while (str[length] != '\0')
+		length++;
+	int i = 0;
+	while (str[i] != '\0' && str[i] != c)
+		i++;
+	char *ret = (char *)malloc(sizeof(char) * (i + 1));
+	if (!ret)
+		return NULL;
+	int start = 0;
+	while (start < i)
+	{
+		ret[start] = str[start];
+		start++;
+	}
+	ret[start] = '\0';
+	return (ret);
 }

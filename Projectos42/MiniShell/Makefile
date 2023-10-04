@@ -6,7 +6,7 @@
 #    By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 16:06:29 by mikferna          #+#    #+#              #
-#    Updated: 2023/09/27 13:09:08 by mikferna         ###   ########.fr        #
+#    Updated: 2023/10/03 12:34:29 by mikferna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ DEFAULT = \033[0m
 
 SRCS			=	srcs/00_main.c						\
 					srcs/01_checker.c					\
+					srcs/02_node_utils.c				\
+					srcs/03_minishell.c					\
 					srcs/libft/ft_itoa.c				\
 					srcs/libft/ft_putchar_fd.c			\
 					srcs/libft/ft_putstr_fd.c			\
@@ -36,6 +38,8 @@ SRCS			=	srcs/00_main.c						\
 					srcs/libft/ft_strncmp.c				\
 					srcs/libft/ft_strtrim.c				\
 					srcs/libft/ft_substr.c				\
+					srcs/builtins/cd.c					\
+					srcs/builtins/env_gen.c				\
 
 
 OBJS			=	$(SRCS:.c=.o)
@@ -46,6 +50,7 @@ PREFIXED		=	$(addprefix $(DIR_OBJS), $(OBJS))
 $(DIR_OBJS)%.o : %.c
 	@mkdir -p $(DIR_OBJS)srcs/
 	@mkdir -p $(DIR_OBJS)srcs/libft
+	@mkdir -p $(DIR_OBJS)srcs/builtins
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(PREFIXED)
