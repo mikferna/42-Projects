@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:33:14 by mikferna          #+#    #+#             */
-/*   Updated: 2022/12/22 14:45:05 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/01/20 11:20:01 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@
 # include <stdlib.h>
 # include <stdio.h>
 
-char	*leer_linea(int fd, char *line);
-char	*escribir_linea_leida(char *document);
-char	*borrar_linea_escrita(char *document);
+char	*devolver_linea(char *documento);
+char	*borrar_linea(char *documento);
+char	*read_save(int fd, char *linea);
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *str1, char *str2);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif

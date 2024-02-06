@@ -6,45 +6,101 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:32:35 by mikferna          #+#    #+#             */
-/*   Updated: 2022/12/22 14:47:38 by mikferna         ###   ########.fr       */
+/*   Updated: 2023/01/20 13:30:57 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*devolver_linea(int fd)
+char	*get_next_line(int fd)
 {
-	static char	*buff;
-	char	*linea;
-	int		cont;
-	int		cont2;
+	static char	*documento_guardado;
+	char		*linea;
 
-	cont = 0;
-	cont2 = 0;
-	buff = malloc(sizeof(char ) * BUFFER_SIZE + 1);
-	linea = malloc(sizeof(char ) * BUFFER_SIZE + 1);
-	read(fd, buff, BUFFER_SIZE);
-	buff[BUFFER_SIZE] = '\0';
-	while (buff[cont] && buff[cont] != '\n')
-	{
-		linea[cont2] = buff[cont];
-		cont++;
-		cont2++;
-		if (!buff[cont])
-		{
-			read(fd, buff, BUFFER_SIZE);
-			cont = 0;
-		}
-	}
-	linea[cont2] = '\n';
-	linea[cont2 + 1] = '\0';
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	documento_guardado = read_save(fd, documento_guardado);
+	if (!documento_guardado)
+		return (NULL);
+	linea = devolver_linea(documento_guardado);
+	documento_guardado = borrar_linea(documento_guardado);
 	return (linea);
 }
 
-int	main(void)
+char	*read_save(int fd, char *linea)
 {
-	int	a;
+	char	*buff;
+	int		e;
 
-	a = open("text.txt", O_RDONLY);
-	printf("%s", get_next_line(a));
+	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!buff)
+		return (NULL);
+	e = 1;
+	while (!ft_strchr(linea, '\n') && e)
+	{
+		e = read(fd, buff, BUFFER_SIZE);
+		if (e == -1)
+		{
+			free(buff);
+			return (NULL);
+		}
+		buff[e] = '\0';
+		linea = ft_strjoin(linea, buff);
+	}
+	free(buff);
+	return (linea);
+}
+
+char	*devolver_linea(char *documento)
+{
+	int		cont;
+	char	*linea_escrita;
+
+	cont = 0;
+	if (!documento[cont])
+		return (NULL);
+	while (documento[cont] != '\n' && documento[cont] != '\0')
+		cont ++;
+	linea_escrita = malloc(sizeof(char) * cont + 2);
+	if (!linea_escrita)
+		return (NULL);
+	cont = 0;
+	while (documento[cont] && documento[cont] != '\n')
+	{
+		linea_escrita[cont] = documento[cont];
+		cont++;
+	}
+	if (documento[cont] == '\n')
+	{
+		linea_escrita[cont] = documento[cont];
+		cont++;
+	}
+	linea_escrita[cont] = '\0';
+	return (linea_escrita);
+}
+
+char	*borrar_linea(char *documento)
+{
+	char	*new_documento;
+	int		cont1;
+	int		cont2;
+
+	cont1 = 0;
+	while (documento[cont1] && documento[cont1] != '\n')
+		cont1++;
+	if (!documento[cont1])
+	{
+		free(documento);
+		return (NULL);
+	}
+	new_documento = malloc(sizeof(char) * (ft_strlen(documento) - cont1 + 1));
+	if (!new_documento)
+		return (NULL);
+	cont1++;
+	cont2 = 0;
+	while (documento[cont1])
+		new_documento[cont2++] = documento[cont1++];
+	new_documento[cont2] = '\0';
+	free (documento);
+	return (new_documento);
 }
