@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 12:53:09 by mikferna          #+#    #+#             */
-/*   Updated: 2024/03/21 13:59:00 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:20:01 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,11 @@ const char *Span::NoSpanException::what() const throw()
 const char *Span::FullSpanException::what() const throw()
 {
 	return "Span is full";
+}
+
+void Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end)
+{
+	if (this->_vec.size() + std::distance(begin, end) > this->_n)
+		throw Span::FullSpanException();
+	this->_vec.insert(this->_vec.end(), begin, end);
 }

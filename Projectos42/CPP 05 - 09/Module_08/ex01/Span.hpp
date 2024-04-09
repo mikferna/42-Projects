@@ -6,7 +6,7 @@
 /*   By: mikferna <mikferna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 12:53:01 by mikferna          #+#    #+#             */
-/*   Updated: 2024/03/19 13:28:22 by mikferna         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:19:44 by mikferna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ class Span
 			public:
 				virtual const char *what() const throw();
 		};
+		void addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 };
-
-
 
 #endif
