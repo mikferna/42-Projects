@@ -16,6 +16,9 @@ DOCKER_COMPOSE := docker-compose
 # Comandos Makefile
 all: build run
 
+# Reconstruir todo desde cero
+re: clean all
+
 # Construir la imagen usando docker-compose
 build:
 	$(DOCKER_COMPOSE) build
