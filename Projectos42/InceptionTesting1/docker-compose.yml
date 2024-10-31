@@ -1,0 +1,58 @@
+volumes:
+  wordpress:
+    name: wordpress
+    driver: local
+    driver_opts:
+      device: ./requirements/WordPress/tools/data
+      o: bind
+      type: none
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      device: ./requirements/MariaDB/tools/data
+      o: bind
+      type: none
+
+networks:
+  inception:
+    name: inception
+
+services:
+  wordpress:
+    build:
+      context: ./requirements/WordPress
+    container_name: wordpress
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/lib/mysql
+    networks:
+      - inception
+    restart: always
+  mariadb:
+    build:
+      context: ./requirements/MariaDB
+    container_name: mariadb
+    env_file:
+      - .env
+    volumes:
+      - mariadb:/var/lib/mysql
+    networks:
+      - inception
+    restart: always
+  nginx:
+    build:
+      context: ./requirements/nginx
+    container_name: nginx
+    volumes:
+      - wordpress:/var/www/html
+    ports:
+      - "443:443"
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    env_file:
+      - .env
+    restart: always
